@@ -1,110 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <title>Space Jumpers</title>
-</head>
-<body>
-    <nav class="nav-bar">
-        <i class="fa-solid fa-earth-asia"></i>
-        <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Explore</li>
-            <li>Contact</li>
-        </ul>
-        <i class="fa-solid fa-bars"></i>
-    </nav>
+  <head>
+    <title>Login V3</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="fonts/iconic/css/material-design-iconic-font.min.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendor/daterangepicker/daterangepicker.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+    <!--===============================================================================================-->
+  </head>
+  <body>
+    <div class="limiter">
+      <div
+        class="container-login100"
+        style="background-image: url('images/space-themed-05.jpg')"
+      >
+        <div class="wrap-login100">
+          <form class="login100-form validate-form">
+            <span class="login100-form-logo">
+              <i class="zmdi zmdi-landscape"></i>
+            </span>
 
-    <header class="side-spacing">
-        <h2>Welcome to Space Jumpers, explore the exo-planets with visual information</h2>
-    </header>
-    <div class="sketchfab-embed-wrapper">
-        <iframe title="Terran Planet 10" frameborder="0" allow="autoplay; fullscreen;"
-            xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered
-            web-share 
-            src="https://sketchfab.com/models/012ae98e3034443cad35eac0e11d93c3/embed?controls=0&autostart=1&loop=1&share=0">
-        </iframe>
+            <span class="login100-form-title p-b-34 p-t-27"> Log in </span>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Enter username"
+            >
+              <input
+                class="input100"
+                type="text"
+                name="username"
+                placeholder="Username"
+              />
+              <span class="focus-input100" data-placeholder="&#xf207;"></span>
+            </div>
+
+            <div
+              class="wrap-input100 validate-input"
+              data-validate="Enter password"
+            >
+              <input
+                class="input100"
+                type="password"
+                name="pass"
+                placeholder="Password"
+              />
+              <span class="focus-input100" data-placeholder="&#xf191;"></span>
+            </div>
+
+            <div class="contact100-form-checkbox">
+              <input
+                class="input-checkbox100"
+                id="ckb1"
+                type="checkbox"
+                name="remember-me"
+              />
+              <label class="label-checkbox100" for="ckb1"> Remember me </label>
+            </div>
+
+            <div class="container-login100-form-btn">
+              <button class="login100-form-btn">Login</button>
+            </div>
+
+            <div class="text-center p-t-90">
+              <a class="txt1" href="#"> Forgot Password? </a>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    
-    <!-- 3D Model Container -->
-    <div id="model-container"></div> 
 
-    <form action="" class="side-spacing">
-        <fieldset>
-            <legend>Sign-In</legend>
-            <label for="email">Enter your mail ID: </label>
-            <input type="text"><br>
-            <label for="password">Enter your passcode: </label>
-            <input type="password" name="passcode" id="passcode"><br>
-            <input type="submit" value="Sign-In">
-            <p>Already have an account? <a href="">Sign-Up</a></p>
-        </fieldset>
-    </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/loaders/GLTFLoader.js"></script>
+    <div id="dropDownSelect1"></div>
 
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.28/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/bevRFHGoqUeh1tME/scene.splinecode"></spline-viewer>
-    <script>
-        // Create the scene, camera, and renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 400, 0.1, 1000); // Adjusted to the container height
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, 400); // Matches the container height
-        document.getElementById('model-container').appendChild(renderer.domElement);
-
-        // Add directional light for visibility
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(1, 1, 1).normalize();
-        scene.add(light);
-
-        // Optional: Add an ambient light to brighten up the scene
-        const ambientLight = new THREE.AmbientLight(0x404040, 2); // soft white light
-        scene.add(ambientLight);
-
-        // Load the GLTF model
-        const loader = new THREE.GLTFLoader();
-
-        // Specify the correct paths for the model and textures
-        loader.load('./scene.gltf', function (gltf) {  // GLTF file is in the same directory as index.html
-            const model = gltf.scene;
-            scene.add(model);
-
-            // Adjust the position, scale, and rotation of the model
-            model.position.set(0, -1, 0);  // Adjust position
-            model.scale.set(0.5, 0.5, 0.5); // Scale down if the model is too large
-            model.rotation.y = Math.PI;    // Rotate the model if needed
-
-            // Render loop after model load
-            animate();
-        }, undefined, function (error) {
-            console.error('Error loading the model:', error);
-        });
-
-        // Set camera position
-        camera.position.z = 5;
-
-        // Create a basic animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        }
-
-        // Ensure canvas resizes on window resize
-        window.addEventListener('resize', () => {
-            const width = window.innerWidth;
-            const height = 400; // Fixed height of the container
-            renderer.setSize(width, height);
-            camera.aspect = width / height;
-            camera.updateProjectionMatrix();
-        });
-
-    </script>
-</body>
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+  </body>
 </html>
-
-
