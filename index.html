@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <title>NASA Space</title>
 </head>
 <body>
-    <h1>Heading</h1>
+    <nav class="nav-bar">
+        <h3 class="side-spacing">NASA Space</h3>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Explore</li>
+            <li>Contact</li>
+        </ul>
+        <i class="fa-solid fa-bars"></i>
+    </nav>
+    <header class="side-spacing">
+        <h2 class="side-spacing">Welcome to Space Jumpers, explore the exo-planets with visual information</h2>
+    </header>
+    <form action="">
+        <fieldset>
+            <legend>Sign Up</legend>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div> <br>
+            <div class="form-group">
+                <input type="submit">
+            </div>
+        </fieldset>
+    </form>
 </body>
 </html>

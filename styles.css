@@ -18,33 +18,15 @@
   --font-one: "DM Sans", sans-serif;
 }
 
-.wrap-login100 {
-  width: 360px;
-  background: var(--quaternary-color);
-  border-radius: var(--round-borders);
-  padding: 50px 55px 37px 55px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-.container-login100 {
-  width: 100%;
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-}
-
 body {
   margin: 0;
   padding: 0;
   font-family: var(--font-one);
   font-weight: var(--mid-font-weight);
+  color: var(--quaternary-color);
+  background-image: linear-gradient(to right bottom, #000000, #230f1b, #371739, #3c2662, #0b3d91);
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .nav-bar {
@@ -67,11 +49,6 @@ body {
 .nav-bar ul li {
   margin: 0 var(--margins-side);
   font-size: var(--small-font);
-}
-
-.fa-earth-asia {
-  font-size: var(--mid-font);
-  padding-right: var(--margins-side);
 }
 
 @media (max-width: 768px) {
@@ -104,154 +81,62 @@ body {
   .nav-bar ul li {
     font-size: var(--small-font);
   }
-
-  .fa-earth-americas {
-    font-size: var(--small-font);
-  }
 }
 
 .side-spacing {
   padding: 10px var(--button-padding);
+  color: var(--quaternary-color);
 }
 
 form {
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 300px;
-  margin: 0 auto;
+  margin: 0 40px;
   font-family: "DM Sans", sans-serif;
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 
 fieldset {
-  border: none;
-  padding: 0;
+  width: 90%;
+  max-width: 300px;
+  border-radius: var(--round-borders);
 }
 
 legend {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  display: block;
+  padding: var(--button-padding);
+  font-size:3vh;
+  margin-left: 20px;
 }
 
-label,
-input[type="text"],
-input[type="password"],
-input[type="submit"] {
+.form-group {
+  margin: 10px;
+}
+
+.form-group label {
   display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
   width: 100%;
-  margin-bottom: 15px;
-  font-size: 1rem;
-}
-
-input[type="text"],
-input[type="password"] {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--quaternary-color);
   border-radius: 5px;
   box-sizing: border-box;
 }
 
-input[type="submit"] {
-  padding: 10px;
-  background-color: #0b3d91;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-input[type="submit"]:hover {
-  background-color: #fc3d21;
-}
-
-.login100-form-title {
-  font-family: var(--font-one);
-  font-size: var(--big-font);
-  color: var(--primary-color);
-  text-align: center;
-}
-
-.input100 {
-  font-family: var(--font-one);
-  font-size: var(--small-font);
-  padding: 0 5px;
-  color: var(--primary-color);
-}
-
-.login100-form-btn {
-  font-family: var(--font-one);
-  font-size: var(--mid-font);
-  background-color: var(--secondary-color);
+.form-group input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: var(--tertiary-color);
   color: var(--quaternary-color);
-  padding: 10px;
+  border: none;
   border-radius: 10px;
   cursor: pointer;
-  width: 100%;
-  border: none;
 }
 
-.login100-form-btn:hover {
-  background-color: var(--tertiary-color);
-}
-
-.txt1 {
-  font-family: var(--font-one);
-  font-size: var(--small-font);
-  color: var(--secondary-color);
-}
-
-.txt1:hover {
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .wrap-login100 {
-    width: 100%;
-    padding: 30px 30px;
-  }
-
-  .login100-form-title {
-    font-size: var(--mid-font);
-  }
-}
-
-@media (max-width: 480px) {
-  .wrap-login100 {
-    padding: 20px;
-  }
-
-  .login100-form-title {
-    font-size: var(--small-font);
-  }
-
-  .input100 {
-    font-size: var(--small-font);
-  }
-
-  .login100-form-btn {
-    font-size: var(--small-font);
-  }
-}
-
-p {
-  font-size: 0.9rem;
-  text-align: center;
-}
-
-p a {
-  color: #0b3d91;
-}
-
-p a:hover {
-  text-decoration: underline;
-}
-
-#model-container {
-  width: 100%;
-  margin-bottom: 20px;
+.form-group input[type="submit"]:hover {
+  background-color: var(--secondary-color);
 }
