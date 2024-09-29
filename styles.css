@@ -26,7 +26,6 @@ body {
   color: var(--quaternary-color);
   background-image: linear-gradient(to right bottom, #000000, #230f1b, #371739, #3c2662, #0b3d91);
   background-repeat: no-repeat;
-  height: 100vh;
 }
 
 .nav-bar {
@@ -61,15 +60,15 @@ body {
     width: 100%;
   }
 
+  .introduction {
+    font-size: 5vh;
+  }
+
   .nav-bar ul li {
     font-size: var(--small-font);
     text-align: center;
     padding: var(--button-padding) 0;
     width: 100%;
-  }
-
-  .fa-earth-asia {
-    font-size: var(--mid-font);
   }
 }
 
@@ -80,6 +79,17 @@ body {
 
   .nav-bar ul li {
     font-size: var(--small-font);
+  }
+}
+
+@media (min-width: 800px) {
+  header {
+    padding: 100px;
+    font-size: 5vh;
+  }
+
+  .introduction {
+    font-size: 6vh;
   }
 }
 
@@ -101,12 +111,17 @@ fieldset {
   border-radius: var(--round-borders);
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  margin-bottom: 100px;
 }
 
 legend {
-  padding: var(--button-padding);
-  font-size:3vh;
+  padding: 5px 10px;
+  font-size:2.5vh;
   margin-left: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-left: 2px solid var(--quaternary-color);
+  border-right: 2px solid var(--quaternary-color);
+  border-radius: 15px;
 }
 
 .form-group {
@@ -126,6 +141,7 @@ legend {
   border: 1px solid var(--quaternary-color);
   border-radius: 5px;
   box-sizing: border-box;
+  font-family: var(--font-one);
 }
 
 .form-group input[type="submit"] {
@@ -138,6 +154,7 @@ legend {
   border-radius: 10px;
   font-family: var(--font-one);
   cursor: pointer;
+  transition: 0.6s linear;
 }
 
 .form-group input[type="submit"]:hover {
