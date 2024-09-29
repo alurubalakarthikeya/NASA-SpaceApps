@@ -89,16 +89,18 @@ body {
 }
 
 form {
-  padding: 20px;
   margin: 0 40px;
   font-family: "DM Sans", sans-serif;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
 }
 
 fieldset {
-  width: 90%;
+  width: 100%;
   max-width: 300px;
   border-radius: var(--round-borders);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 legend {
@@ -129,11 +131,12 @@ legend {
 .form-group input[type="submit"] {
   display: block;
   width: 100%;
-  padding: 10px 20px;
+  padding: 15px 20px;
   background-color: var(--tertiary-color);
   color: var(--quaternary-color);
   border: none;
   border-radius: 10px;
+  font-family: var(--font-one);
   cursor: pointer;
 }
 
