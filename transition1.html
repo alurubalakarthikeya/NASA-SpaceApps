@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transition_1</title>
+    <style>
+      /* Ensure body takes up full viewport */
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+        background-color: rgba(135, 207, 235, 0.936);
+      }
+
+      .rocket {
+        position: absolute;
+        top: 50vh;
+        left: 48vw;
+        width: 30vw;
+        height: auto;
+        transform: translate(-50%, -50%) rotate(-30deg);
+      }
+
+      /* Rocket moves along with the loading bar */
+      .rocket-icon {
+        position: relative;
+        height: inherit 10px;
+        bottom: 5px;
+        animation: move-rocket 1ms linear forwards;
+        transform: rotate(30deg);
+      }
+
+      .cloud-1,
+      .cloud-2 {
+        position: absolute;
+        width: 20vw;
+        height: auto;
+      }
+
+      .cloud-1 {
+        top: 10vh;
+        left: 10vw;
+      }
+
+      .cloud-2 {
+        top: 20vh;
+        right: 5vw;
+      }
+
+      @media screen and (max-width: 768px) {
+        .rocket {
+          width: 40vw;
+        }
+
+        .cloud-1,
+        .cloud-2 {
+          width: 30vw;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .rocket {
+          width: 50vw;
+        }
+
+        .cloud-1,
+        .cloud-2 {
+          width: 35vw;
+        }
+      }
+
+      /* Loading container positioned at bottom right */
+      .loading-container {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 30vw;
+        height: 5vh;
+      }
+
+      /* Progress bar */
+      .progress-bar {
+        position: relative;
+        height: 10px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        overflow: hidden;
+      }
+
+      /* Loading bar fill */
+      .loading-fill {
+        height: 100%;
+        width: 0;
+        background-color: rgba(0, 128, 0, 0.8);
+        border-radius: 5px;
+        animation: load 5s linear forwards;
+      }
+
+      /* Animation for the loading fill */
+      @keyframes load {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      /* Rocket moves along with the loading bar */
+      .rocket-icon {
+        position: relative;
+        bottom: 6px;
+        animation: move-rocket 1ms linear forwards;
+        transform: rotate(30deg);
+      }
+
+      /* Plane icons on either side */
+      .plane-icon-left {
+        position: absolute;
+        top: -10px;
+        left: -30px;
+        width: 5vh;
+        height: auto;
+        z-index: 1;
+      }
+
+      .plane-icon-right {
+        position: absolute;
+        top: -10px;
+        right: -30px;
+        width: 5vh;
+        height: auto;
+        z-index: 1;
+      }
+
+      /* Move the rocket along the width of the progress bar */
+      @keyframes move-rocket {
+        0% {
+          left: 0;
+        }
+        100% {
+          left: calc(100% - 6vh);
+        }
+      }
+
+      /* Media queries for responsive design */
+      @media screen and (max-width: 768px) {
+        .loading-container {
+          width: 40vw;
+          height: 7vh;
+        }
+
+        .rocket-icon {
+          width: 5vh;
+        }
+
+        .plane-icon-left,
+        .plane-icon-right {
+          width: 4vh;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .loading-container {
+          width: 50vw;
+          height: 6vh;
+        }
+
+        .rocket-icon {
+          width: 4vh;
+        }
+
+        .plane-icon-left,
+        .plane-icon-right {
+          width: 3vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      class="rocket"
+      src="Media/rondy-stickers-flying-rocket.gif"
+      alt="rocket"
+    />
+    <img class="cloud-1" src="Media/flame-cloud.gif" alt="cloud-1" />
+    <img class="cloud-2" src="Media/flame-cloud.gif" alt="cloud-2" />
+
+    <!-- Loading Bar Container -->
+    <div class="loading-container">
+      <!-- Plane icon on the left -->
+      <img
+        class="plane-icon-left"
+        src="Media/plane-icon-left.gif"
+        alt="plane-left"
+      />
+
+      <!-- Progress Bar with Rocket -->
+      <div class="progress-bar">
+        <div class="loading-fill">
+          <img
+            class="rocket-icon"
+            src="Media/rondy-stickers-flying-rocket.gif"
+            alt="rocket"
+          />
+        </div>
+      </div>
+
+      <!-- Plane icon on the right -->
+      <img
+        class="plane-icon-right"
+        src="Media/plane-icon-right.gif"
+        alt="plane-right"
+      />
+    </div>
+
+    <script>
+      // Redirect to another site after the loading animation is complete (5 seconds)
+      setTimeout(function () {
+        window.location.href = "transition1.html"; // Replace with your desired URL
+      }, 5000); // Matches the duration of the loading bar
+    </script>
+  </body>
+</html>
