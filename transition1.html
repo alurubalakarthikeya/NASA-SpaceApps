@@ -19,7 +19,7 @@
 
       .rocket {
         position: absolute;
-        top: 50vh;
+        top: 55vh;
         left: 48vw;
         width: 30vw;
         height: auto;
@@ -29,10 +29,10 @@
       /* Rocket moves along with the loading bar */
       .rocket-icon {
         position: relative;
-        height: inherit 10px;
+        height: 30px;
         bottom: 5px;
         animation: move-rocket 1ms linear forwards;
-        transform: rotate(30deg);
+        transform: rotate(50deg);
       }
 
       .cloud-1,
@@ -77,13 +77,13 @@
       /* Loading container positioned at bottom right */
       .loading-container {
         position: absolute;
-        bottom: 20px;
-        right: 20px;
+        bottom: 3vw;
+        right: 8vw;
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 30vw;
-        height: 5vh;
+        height: 5vw;
       }
 
       /* Progress bar */
@@ -126,20 +126,21 @@
       /* Plane icons on either side */
       .plane-icon-left {
         position: absolute;
-        top: -10px;
+        top: 50%;
+        transform: translateY(-50%); /* Vertically centers */
         left: -30px;
-        width: 5vh;
+        width: 3vh;
         height: auto;
-        z-index: 1;
       }
 
+      /* Adjust plane icon on the right to align with the progress bar */
       .plane-icon-right {
         position: absolute;
-        top: -10px;
+        top: 50%;
+        transform: translateY(-50%); /* Vertically centers */
         right: -30px;
-        width: 5vh;
+        width: 3vh;
         height: auto;
-        z-index: 1;
       }
 
       /* Move the rocket along the width of the progress bar */
@@ -181,7 +182,8 @@
 
         .plane-icon-left,
         .plane-icon-right {
-          width: 3vh;
+          width: 4vh;
+          margin-top: 3vw;
         }
       }
     </style>
@@ -200,7 +202,7 @@
       <!-- Plane icon on the left -->
       <img
         class="plane-icon-left"
-        src="Media/plane-icon-left.gif"
+        src="Media/vivid-terraced-view-of-the-city.gif"
         alt="plane-left"
       />
 
@@ -216,11 +218,7 @@
       </div>
 
       <!-- Plane icon on the right -->
-      <img
-        class="plane-icon-right"
-        src="Media/plane-icon-right.gif"
-        alt="plane-right"
-      />
+      <img class="plane-icon-right" src="Media/earth.gif" alt="plane-right" />
     </div>
 
     <script>
