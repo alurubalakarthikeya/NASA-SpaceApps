@@ -24,7 +24,14 @@ body {
   font-family: var(--font-one);
   font-weight: var(--mid-font-weight);
   color: var(--quaternary-color);
-  background-image: linear-gradient(to right bottom, #000000, #230f1b, #371739, #3c2662, #0b3d91);
+  background-image: linear-gradient(
+    to right bottom,
+    #000000,
+    #230f1b,
+    #371739,
+    #3c2662,
+    #0b3d91
+  );
   background-repeat: no-repeat;
 }
 
@@ -35,6 +42,7 @@ body {
   align-items: center;
   color: var(--quaternary-color);
   padding: var(--button-padding) var(--margins-side);
+  margin: 0px 0px 0px 20px;
 }
 
 .nav-bar ul {
@@ -105,6 +113,7 @@ body {
 }
 
 .side-spacing {
+  margin-left: 20px;
   padding: 10px var(--button-padding);
   color: var(--quaternary-color);
 }
@@ -127,7 +136,7 @@ fieldset {
 
 legend {
   padding: 5px 10px;
-  font-size:2.5vh;
+  font-size: 2.5vh;
   margin-left: 20px;
   background-color: rgba(255, 255, 255, 0.2);
   border-left: 2px solid var(--quaternary-color);
@@ -174,7 +183,7 @@ legend {
   border-right: 2px solid var(--quaternary-color);
 }
 
-p { 
+p {
   font-size: 2vh;
   margin: var(--margins-side);
 }
