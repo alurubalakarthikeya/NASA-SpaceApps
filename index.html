@@ -24,8 +24,8 @@
     <div class="sign-up-section">
     <form action="">
         <fieldset>
-            <legend>Sign Up</legend>
-            <div class="form-group">
+            <legend id="signInUp">Sign Up</legend>
+            <div class="form-group removeName">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
             </div>
@@ -39,8 +39,11 @@
             </div> <br>
             <div class="form-group">
                 <input type="submit">
+                <p id="signOption">Already have any account? <a href="" onclick="singIn()">Sign In</a>
+                </p>
             </div>
         </fieldset>
     </form>
+<script src="app.js"></script>
 </body>
 </html>

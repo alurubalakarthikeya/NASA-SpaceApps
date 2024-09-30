@@ -82,14 +82,25 @@ body {
   }
 }
 
-@media (min-width: 800px) {
+@media (min-width: 769px) {
   header {
     padding: 100px;
     font-size: 5vh;
   }
 
+  .nav-bar ul li:last-child {
+    margin-right: 50px;
+  }
+  .nav-bar h3 {
+    margin-left: 30px;
+  }
+
   .introduction {
     font-size: 6vh;
+  }
+
+  .fa-bars {
+    display: none;
   }
 }
 
@@ -110,7 +121,7 @@ fieldset {
   max-width: 300px;
   border-radius: var(--round-borders);
   background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
   margin-bottom: 100px;
 }
 
@@ -151,12 +162,24 @@ legend {
   background-color: var(--tertiary-color);
   color: var(--quaternary-color);
   border: none;
-  border-radius: 10px;
+  border-radius: 15px;
   font-family: var(--font-one);
   cursor: pointer;
-  transition: 0.6s linear;
+  transition: 0.4s;
 }
 
 .form-group input[type="submit"]:hover {
   background-color: var(--secondary-color);
+  border-left: 2px solid var(--quaternary-color);
+  border-right: 2px solid var(--quaternary-color);
+}
+
+p { 
+  font-size: 2vh;
+  margin: var(--margins-side);
+}
+
+p a {
+  color: var(--quaternary-color);
+  text-decoration: underline;
 }
