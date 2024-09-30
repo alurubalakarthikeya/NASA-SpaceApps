@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>NASA Space</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <h3>NASA Space</h3>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Explore</li>
+            <li>Contact</li>
+        </ul>
+        <i class="fa-solid fa-bars"></i>
+    </nav>
+    <header class="side-spacing">
+        <h2 class="side-spacing introduction">Welcome to Space Jumpers, explore the exo-planets with visual information</h2>
+    </header>
+    <div class="sign-up-section">
+    <form action="">
+        <fieldset>
+            <legend id="signInUp">Sign Up</legend>
+            <div class="form-group removeName">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div> <br>
+            <div class="form-group">
+                <input type="submit">
+                <p id="signOption">Already have any account? <a href="" onclick="singIn()">Sign In</a>
+                </p>
+            </div>
+        </fieldset>
+    </form>
+<script src="app.js"></script>
+</body>
+</html>
