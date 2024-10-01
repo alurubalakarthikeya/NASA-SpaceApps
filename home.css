@@ -1,0 +1,23 @@
+body {
+  margin: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.Home_Video {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("video/NASA_SpaceApps_Home_Video.mp4");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
