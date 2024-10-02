@@ -1,0 +1,11 @@
+Model Information:
+* title:	The Star “Sun”
+* source:	https://sketchfab.com/3d-models/the-star-sun-519dddb6998545e2bf84225394dc71fe
+* author:	ARCTIC  WOLVES™ (https://sketchfab.com/arctic.wolves)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "The Star “Sun”" (https://sketchfab.com/3d-models/the-star-sun-519dddb6998545e2bf84225394dc71fe) by ARCTIC  WOLVES™ (https://sketchfab.com/arctic.wolves) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
