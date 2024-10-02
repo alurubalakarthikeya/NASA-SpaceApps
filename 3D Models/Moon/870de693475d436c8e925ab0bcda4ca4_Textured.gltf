@@ -4,16 +4,8 @@
       "bufferView": 0,
       "componentType": 5126,
       "count": 2052,
-      "max": [
-        1.0000008344650269,
-        1.0000008344650269,
-        1.0000008344650269
-      ],
-      "min": [
-        -1.0,
-        -1.0,
-        -1.0
-      ],
+      "max": [1.0000008344650269, 1.0000008344650269, 1.0000008344650269],
+      "min": [-1.0, -1.0, -1.0],
       "type": "VEC3"
     },
     {
@@ -44,16 +36,8 @@
       "bufferView": 5,
       "componentType": 5126,
       "count": 2052,
-      "max": [
-        1.0000008344650269,
-        1.0000008344650269,
-        1.0000008344650269
-      ],
-      "min": [
-        -1.0,
-        -1.0,
-        -1.0
-      ],
+      "max": [1.0000008344650269, 1.0000008344650269, 1.0000008344650269],
+      "min": [-1.0, -1.0, -1.0],
       "type": "VEC3"
     },
     {
@@ -166,35 +150,30 @@
     {
       "doubleSided": true,
       "name": "moon",
-      "normalTexture" : {
-      "index" : 0,
-      "scale" : 2
+      "normalTexture": {
+        "index": 0,
+        "scale": 2
       },
-      "emissiveFactor" : [1.0,1.0,1.0],
-      "emissiveTexture" : {
-      "index" : 0
+      "emissiveFactor": [1.0, 1.0, 1.0],
+      "emissiveTexture": {
+        "index": 0
       },
       "pbrMetallicRoughness": {
-        "baseColorTexture" : {"index" : 0},
-        "metallicFactor" : 0,
-        "metallicRoughnessTexture" : { "index" : 0 },
-        "baseColorFactor": [
-          1.0,
-          1.0,
-          1.0,
-          1.0
-        ]
+        "baseColorTexture": { "index": 0 },
+        "metallicFactor": 0,
+        "metallicRoughnessTexture": { "index": 0 },
+        "baseColorFactor": [1.0, 1.0, 1.0, 1.0]
       }
     }
   ],
   "images": [
     {
-         "uri" : "058dcbf242ab4ea987a226de79e658c9_RGB_moon_8k_color_brim16.jpeg"
+      "uri": "058dcbf242ab4ea987a226de79e658c9_RGB_moon_8k_color_brim16.jpeg"
     }
   ],
   "textures": [
     {
-         "source" : 0
+      "source": 0
     }
   ],
   "meshes": [
@@ -232,34 +211,17 @@
       "name": "Moon"
     },
     {
-      "children": [
-        0
-      ],
+      "children": [0],
       "name": "Moon",
-      "rotation": [
-        -0.7071067811865475,
-        0.0,
-        0.0,
-        0.7071067811865476
-      ],
-      "scale": [
-        1.0,
-        1.0,
-        1.0
-      ],
-      "translation": [
-        0.0,
-        0.0,
-        0.0
-      ]
+      "rotation": [-0.7071067811865475, 0.0, 0.0, 0.7071067811865476],
+      "scale": [1.0, 1.0, 1.0],
+      "translation": [0.0, 0.0, 0.0]
     }
   ],
   "scene": 0,
   "scenes": [
     {
-      "nodes": [
-        1
-      ]
+      "nodes": [1]
     }
   ]
 }
