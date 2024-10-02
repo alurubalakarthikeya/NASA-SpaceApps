@@ -25,34 +25,111 @@
               <a href="#">Clients</a>
               <a href="#">Contact</a>
             </div>
-          </div>
+        </div>
     </nav>
+
     <header class="side-spacing">
         <h2 class="side-spacing introduction">Welcome to Space Jumpers, explore the exo-planets with visual information</h2>
     </header>
+
     <div class="sign-up-section">
-    <form action="">
-        <fieldset>
-            <legend id="signInUp">Sign Up</legend>
-            <div class="form-group removeName">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div> <br>
-            <div class="form-group">
-                <input type="submit">
-                <p id="signOption">Already have any account? <a href="" onclick="singIn()">Sign In</a>
-                </p>
-            </div>
-        </fieldset>
-    </form>
-<script src="app.js"></script>
+        <div class="form">
+        <form action="">
+            <fieldset>
+                <legend id="signInUp">Sign Up</legend>
+                <div class="form-group removeName">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div> 
+                <br>
+                <div class="form-group">
+                    <input type="submit">
+                    <p id="signOption">Already have an account? <a href="" onclick="singIn()">Sign In</a></p>
+                </div>
+            </fieldset>
+        </form>
+        </div>
+        <div class="earth">
+            <!-- The 3D model will be rendered here -->
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+      // Scene setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Alpha for transparent background
+      renderer.setClearColor(0x000000, 0); // Set clear color to transparent
+      renderer.setSize(window.innerWidth, window.innerHeight);
+
+      // Append the renderer to the earth div instead of body
+      document.querySelector(".earth").appendChild(renderer.domElement);
+
+      // Orbit Controls with damping
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.screenSpacePanning = false;
+
+      // Ambient Light
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
+
+      // Directional Lights
+      const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1.5);
+      directionalLight1.position.set(5, 10, 7);
+      scene.add(directionalLight1);
+
+      const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
+      directionalLight2.position.set(-5, 10, -7);
+      scene.add(directionalLight2);
+
+      // Load GLTF model
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        "3D%20Models/cybEarth/scene.gltf", 
+        function (gltf) {
+          scene.add(gltf.scene);
+        },
+        undefined,
+        function (error) {
+          console.error(error);
+        }
+      );
+
+      // Camera positioning
+      camera.position.set(500, 55, 50);
+      camera.lookAt(0, 0, 0);
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        const earthDiv = document.querySelector(".earth");
+        const width = earthDiv.clientWidth;
+        const height = earthDiv.clientHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      });
+    </script>
 </body>
 </html>
+
