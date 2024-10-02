@@ -41,8 +41,9 @@ body {
   justify-content: space-between;
   align-items: center;
   color: var(--quaternary-color);
-  padding: var(--button-padding) var(--margins-side);
+  padding:var(--button-padding) ;
   margin: 0px 0px 0px 20px;
+  position: sticky;
 }
 
 .nav-bar ul {
@@ -127,6 +128,7 @@ form {
 
 fieldset {
   width: 100%;
+  z-index: 0;
   max-width: 300px;
   border-radius: var(--round-borders);
   background-color: rgba(255, 255, 255, 0.1);
@@ -194,10 +196,10 @@ p a {
 }
 
 .overlay {
-  height: 100%;
-  width: 0;
+  height: 0;
+  width: 100%;
   position: fixed;
-  z-index: 1;
+  z-index: 10000000000000000000000;
   top: 0;
   left: 0;
   background-color: rgb(0,0,0);
@@ -211,27 +213,28 @@ p a {
   top: 25%;
   width: 100%;
   text-align: center;
-  margin-top: 30px;
+  margin-top: var(--margins-side);
 }
 
 .overlay a {
-  padding: 8px;
+  padding: var(--button-padding);
   text-decoration: none;
-  font-size: 36px;
-  color: #818181;
+  font-size: var(--small-font);
+  color: var(--quaternary-color);
   display: block;
   transition: 0.3s;
 }
 
 .overlay a:hover, .overlay a:focus {
-  color: #f1f1f1;
+  color: var(--quaternary-color);
 }
 
 .overlay .closebtn {
   position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
+  top: 10px;
+  right: 5px;
+  font-size: 4vh;
+  font-weight: 200;
 }
 
 @media screen and (max-height: 450px) {
