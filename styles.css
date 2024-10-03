@@ -293,10 +293,9 @@ canvas {
 }
 
 .earth {
-  height: 400px; /* Set a fixed height for Earth section */
+  width: 400px; /* Set a fixed height for Earth section */
   max-width: 100%;
   display: block;
-  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
