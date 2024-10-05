@@ -1,11 +1,11 @@
 Model Information:
-* title:	Kepler-22b
-* source:	https://sketchfab.com/3d-models/kepler-22b-e6c45ff213af4335a823d0a90244d76d
-* author:	SunnyChen753/SW fan (https://sketchfab.com/sunnychen753)
+* title:	Earthlike Exoplanet Surface
+* source:	https://sketchfab.com/3d-models/earthlike-exoplanet-surface-29f009280caf40b6b1c0f121253ee8f5
+* author:	OverGeared (https://sketchfab.com/OverGeared)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Kepler-22b" (https://sketchfab.com/3d-models/kepler-22b-e6c45ff213af4335a823d0a90244d76d) by SunnyChen753/SW fan (https://sketchfab.com/sunnychen753) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Earthlike Exoplanet Surface" (https://sketchfab.com/3d-models/earthlike-exoplanet-surface-29f009280caf40b6b1c0f121253ee8f5) by OverGeared (https://sketchfab.com/OverGeared) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
