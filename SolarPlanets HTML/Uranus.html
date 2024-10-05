@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Uranus</title>
+    <title>3D  Uranus</title>
     <link rel="stylesheet" href="solarplanets.css">
   </head>
   <body>
@@ -12,44 +12,73 @@
       <p>
         Distance from the Sun: 1.784 billion miles
         <br />
-        Mass: 8.681 x 10^25 kg
+        Mass: 8.681 × 10<sup>25</sup> kg
         <br />
         Radius: 25,362 km
         <br />
         Moons: 27
         <br />
-        Uranus is the seventh planet from the Sun and has a unique sideways rotation.
+        Uranus is the seventh planet from the Sun, known for its unique sideways rotation and faint rings. It is composed mainly of hydrogen, helium, and methane, giving it a blue-green appearance.
       </p>
     </div>
 
     <div class="info-point"></div>
     <div class="box">
-      <h3>Current: Uranus</h3>
-      <div class="center">
-      <a href="saturn.html">&#8249;</a>
-      <button>JUMP</button>
-      <div class="dropup-items">
-        <a href="#">Mercury</a>
-        <a href="#">Venus</a>
-        <a href="#">Earth</a>
-        <a href="#">Mars</a>
-        <a href="#">Jupiter</a>
-        <a href="#">Saturn</a>
-        <a href="#">Neptune</a>
-        <a href="#">Pluto</a>
+      <div id="instructions">
+        <h3>Current: Uranus</h3>
+        <h5>Instructions:</h5>
+        <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
+        <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
       </div>
-      <a href="neptune.html">&#8250;</a>
-    </div>
-    </div>
     
+      <div class="center" id="navButtons">
+        <a href="saturn.html">&#8249;</a>
+        <button id="jumpButton">JUMP</button>
+        <a href="neptune.html">&#8250;</a> <!-- Loop back to Mercury -->
+      </div>
+    
+      <div class="dropup-items" id="dropupItems" style="display: none;">
+        <h4>Planets List: </h4>
+        <a href="mercury.html">Mercury</a>
+        <a href="venus.html">Venus</a><br>
+        <a href="earth.html">Earth</a>
+        <a href="mars.html">Mars</a><br>
+        <a href="jupiter.html">Jupiter</a>
+        <a href="saturn.html">Saturn</a><br>
+        <a href="uranus.html">Uranus</a>
+        <a href="neptune.html">Neptune</a><br>
+        <a href="pluto.html">Pluto</a>
+        <h2 id="backButton">&#8249;-------- </h2>
+      </div>
+    </div>
+
     <div class="loading-container" id="loadingContainer">
       <div class="loading-bar" id="loadingBar"></div>
-      <div class="loading-text" id="loadingText">0%</</div>
+      <div class="loading-text" id="loadingText">0%</div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script>
+    <script> 
+      document.getElementById('jumpButton').addEventListener('click', function () {
+      // Hide instructions and navigation buttons
+      document.getElementById('instructions').style.display = 'none';
+      document.getElementById('navButtons').style.display = 'none';
+
+      // Show the dropup-items with the planet list
+      document.getElementById('dropupItems').style.display = 'block';
+    });
+
+    // Handle Back button click to return to instructions
+    document.getElementById('backButton').addEventListener('click', function () {
+      // Show instructions and navigation buttons again
+      document.getElementById('instructions').style.display = 'block';
+      document.getElementById('navButtons').style.display = 'flex';
+
+      // Hide the dropup-items
+      document.getElementById('dropupItems').style.display = 'none';
+    });
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -170,16 +199,16 @@
           // Hide the loading container once the model is loaded
           document.getElementById("loadingContainer").style.display = "none";
 
-          // Load the larger sphere model after the Uranus model is loaded
+          // Load the larger sphere model after the Pluto model is loaded
           loader.load(
             "../3D Models/galaxy_sphere/scene.gltf", // Replace with the path to your larger sphere model
             function (gltf) {
               const largeSphere = gltf.scene;
-              largeSphere.scale.set(3000, 3000, 3000); // Scale the larger sphere to the desired size
+              largeSphere.scale.set(1500, 1500, 1500); // Scale the larger sphere to the desired size
               scene.add(largeSphere);
 
               // Restrict the camera zoom-out movement
-              controls.maxDistance = 3000;
+              controls.maxDistance = 1000;
             },
             undefined,
             function (error) {
@@ -202,7 +231,7 @@
       );
 
       // Camera positioning
-      camera.position.set(800, 800, 800); // Adjusted the camera position to a closer view
+      camera.position.set(600, 100, 600); // Adjusted the camera position to a closer view
       camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
 
       // Animation loop

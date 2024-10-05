@@ -3,51 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Sun</title>
+    <title>3D  Sun</title>
     <link rel="stylesheet" href="solarplanets.css">
   </head>
   <body>
     <div class="hover-box" id="hoverBox">
       <h3>Planet Name: Sun</h3>
       <p>
-        Distance from the Earth: 93 million miles
+        Age: 4.6 billion years
         <br />
-        Mass: 1.989 x 10^30 kg
+        Distance from Earth: 1 astronomical unit (AU)
         <br />
-        Radius: 696,340 km
+        Radius: 695,700 km
         <br />
-        The Sun is the star at the center of the Solar System.
+        Mass: 1.989 × 10<sup>30</sup> kg
+        <br />
+        Composition: Mostly hydrogen (about 74%) and helium (about 24%) with trace amounts of heavier elements
       </p>
     </div>
 
     <div class="info-point"></div>
     <div class="box">
-      <h3>Current: Sun</h3>
-      <div class="center">
-      <a href="SolarSystem.html">&#8249;</a>
-      <button>JUMP</button>
-      <div class="dropup-items">
-        <a href="#">Mercury</a>
-        <a href="#">Venus</a>
-        <a href="#">Earth</a>
-        <a href="#">Mars</a>
-        <a href="#">Jupiter</a>
-        <a href="#">Saturn</a>
-        <a href="#">Uranus</a>
-        <a href="#">Neptune</a>
-        <a href="#">Pluto</a>
+      <div id="instructions">
+        <h3>Current: Sun</h3>
+        <h5>Instructions:</h5>
+        <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
+        <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
       </div>
-      <a href="mercury.html">&#8250;</a>
+    
+      <div class="center" id="navButtons">
+        <a href="SolarSystem.html">&#8249;</a>
+        <button id="jumpButton">JUMP</button>
+        <a href="mercury.html">&#8250;</a> <!-- Loop back to Mercury -->
+      </div>
+    
+      <div class="dropup-items" id="dropupItems" style="display: none;">
+        <h4>Planets List: </h4>
+        <a href="mercury.html">Mercury</a>
+        <a href="venus.html">Venus</a><br>
+        <a href="earth.html">Earth</a>
+        <a href="mars.html">Mars</a><br>
+        <a href="jupiter.html">Jupiter</a>
+        <a href="saturn.html">Saturn</a><br>
+        <a href="uranus.html">Uranus</a>
+        <a href="neptune.html">Neptune</a><br>
+        <a href="pluto.html">Pluto</a>
+        <a href="SolarSystem.html">Solar System</a>
+        <h2 id="backButton">&#8249;-------- </h2>
+      </div>
     </div>
-    </div>
+
     <div class="loading-container" id="loadingContainer">
       <div class="loading-bar" id="loadingBar"></div>
       <div class="loading-text" id="loadingText">0%</div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script>
+    <script> 
+      document.getElementById('jumpButton').addEventListener('click', function () {
+      // Hide instructions and navigation buttons
+      document.getElementById('instructions').style.display = 'none';
+      document.getElementById('navButtons').style.display = 'none';
+
+      // Show the dropup-items with the planet list
+      document.getElementById('dropupItems').style.display = 'block';
+    });
+
+    // Handle Back button click to return to instructions
+    document.getElementById('backButton').addEventListener('click', function () {
+      // Show instructions and navigation buttons again
+      document.getElementById('instructions').style.display = 'block';
+      document.getElementById('navButtons').style.display = 'flex';
+
+      // Hide the dropup-items
+      document.getElementById('dropupItems').style.display = 'none';
+    });
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
