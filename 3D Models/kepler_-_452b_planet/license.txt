@@ -1,0 +1,11 @@
+Model Information:
+* title:	Kepler - 452b Planet
+* source:	https://sketchfab.com/3d-models/kepler-452b-planet-8310c4ebc8c642feaba50996911f80e9
+* author:	Ahnaf Yasin (https://sketchfab.com/ahnaf.yasintx)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Kepler - 452b Planet" (https://sketchfab.com/3d-models/kepler-452b-planet-8310c4ebc8c642feaba50996911f80e9) by Ahnaf Yasin (https://sketchfab.com/ahnaf.yasintx) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

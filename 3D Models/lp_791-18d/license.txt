@@ -1,0 +1,11 @@
+Model Information:
+* title:	LP 791-18d
+* source:	https://sketchfab.com/3d-models/lp-791-18d-486f8dc5fa034364a315ae4e49325d2e
+* author:	pergamond (https://sketchfab.com/pergamond)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "LP 791-18d" (https://sketchfab.com/3d-models/lp-791-18d-486f8dc5fa034364a315ae4e49325d2e) by pergamond (https://sketchfab.com/pergamond) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
