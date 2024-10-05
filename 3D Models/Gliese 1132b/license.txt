@@ -1,0 +1,11 @@
+Model Information:
+* title:	HW Vir C
+* source:	https://sketchfab.com/3d-models/hw-vir-c-1ec129368b064599b1f7c61a9c32e43a
+* author:	uperesito (https://sketchfab.com/uperesito)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "HW Vir C" (https://sketchfab.com/3d-models/hw-vir-c-1ec129368b064599b1f7c61a9c32e43a) by uperesito (https://sketchfab.com/uperesito) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

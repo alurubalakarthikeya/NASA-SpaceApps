@@ -38,16 +38,16 @@
       controls.screenSpacePanning = false;
 
       // Ambient Light
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Lower ambient light for better visibility of the model
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1); // Increased ambient light intensity
       scene.add(ambientLight);
 
       // Directional Light
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5); // Increased light intensity
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 2); // Increased light intensity
       directionalLight.position.set(5, 10, 7);
       directionalLight.castShadow = true;
       scene.add(directionalLight);
 
-      const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
+      const directionalLight2 = new THREE.DirectionalLight(0xffffff, 2);
       directionalLight2.position.set(-5, 10, -7);
       scene.add(directionalLight2);
 
@@ -96,7 +96,7 @@
         const color = planetColors[i % planetColors.length];
         const sphereMaterial = new THREE.MeshPhongMaterial({
           color: color,
-          shininess: 100,
+          shininess: 150, // Increased shininess for brighter appearance
         });
         const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
         sphere.position.set(
@@ -115,8 +115,8 @@
         const sunMaterial = new THREE.MeshPhongMaterial({
           color: sunColors[i],
           emissive: sunColors[i],
-          emissiveIntensity: 1,
-          shininess: 100,
+          emissiveIntensity: 1.5, // Increased emissive intensity
+          shininess: 150, // Increased shininess
         });
         const sun = new THREE.Mesh(sunGeometry, sunMaterial);
         sun.position.set(
@@ -163,7 +163,7 @@
       );
 
       // Camera positioning
-      camera.position.set(25, 35, 25); // Adjusted the camera position to a closer view
+      camera.position.set(500, 100, 500); // Adjusted the camera position to a closer view
       camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
 
       // Animation loop
