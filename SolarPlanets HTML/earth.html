@@ -250,13 +250,12 @@
         },
         function (xhr) {
           // Update the loading bar and text based on the loading progress
-          if (xhr.total > 0) {
-            const percentComplete = (xhr.loaded / xhr.total) * 100;
-            const loadingBar = document.getElementById("loadingBar");
-            const loadingText = document.getElementById("loadingText");
-            loadingBar.style.width = `${percentComplete}%`;
-            loadingText.textContent = `${Math.round(percentComplete)}%`;
-          }
+          const total = xhr.total || 1000000; // Fallback to a large number if total is not available
+          const percentComplete = (xhr.loaded / total) * 100;
+          const loadingBar = document.getElementById("loadingBar");
+          const loadingText = document.getElementById("loadingText");
+          loadingBar.style.width = `${percentComplete}%`;
+          loadingText.textContent = `${Math.round(percentComplete)}%`;
         },
         function (error) {
           console.error(error);
