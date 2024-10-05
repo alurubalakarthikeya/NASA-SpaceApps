@@ -1,0 +1,11 @@
+Model Information:
+* title:	Realistic Jupiter
+* source:	https://sketchfab.com/3d-models/realistic-jupiter-993ba62a539e4c308e9e3137df454ed6
+* author:	Shady Tex (https://sketchfab.com/ShadyTex4u)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Realistic Jupiter" (https://sketchfab.com/3d-models/realistic-jupiter-993ba62a539e4c308e9e3137df454ed6) by Shady Tex (https://sketchfab.com/ShadyTex4u) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
