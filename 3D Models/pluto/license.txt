@@ -1,0 +1,11 @@
+Model Information:
+* title:	Pluto
+* source:	https://sketchfab.com/3d-models/pluto-a30ff3a5f4f3477d87fc534e0d1df7e2
+* author:	Akshat (https://sketchfab.com/shooter24994)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Pluto" (https://sketchfab.com/3d-models/pluto-a30ff3a5f4f3477d87fc534e0d1df7e2) by Akshat (https://sketchfab.com/shooter24994) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Solar System animation
+* source:	https://sketchfab.com/3d-models/solar-system-animation-b7c69a6b655b47c99f871d5ec5aee854
+* author:	Samer_Arab_S5 (https://sketchfab.com/Samer_Arab_S5)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Solar System animation" (https://sketchfab.com/3d-models/solar-system-animation-b7c69a6b655b47c99f871d5ec5aee854) by Samer_Arab_S5 (https://sketchfab.com/Samer_Arab_S5) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
