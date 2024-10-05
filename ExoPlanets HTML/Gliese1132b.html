@@ -11,7 +11,7 @@
       <!-- Gliese 1132 b -->
       <h3>Planet Name: Gliese 1132 b</h3>
       <p>
-        Distance from the Star: 39 light-years
+        Distance from the Sun: 39 light-years
         <br />
         Mass: 1.66 x Earth's mass
         <br />
@@ -28,29 +28,57 @@
       <div class="loading-text" id="loadingText">0%</div>
     </div>
     <div class="box">
-      <h3>Current: Gliese 1132 b</h3>
-      <div class="center">
-      <a href="">&#8249;</a>
-      <button>JUMP</button>
-      <div class="dropup-items">
-        <a href="#">55_cancri_e637</a>
-        <a href="#">GJ1214b</a>
-        <a href="#">Gliese1132b</a>
-        <a href="#">HD189733b</a>
-        <a href="#">Kepler-138</a>
-        <a href="#">Kepler10b</a>
-        <a href="#">OGLE-2016-BLG-1928</a>
-        <a href="#">51_pegasi_b</a>
-        <a href="#">TOI-1452</a>
-        <a href="#">WASP-76b</a>
+      <div id="instructions">
+        <h3>Current: Gliese1132b</h3>
+        <h5>Instructions:</h5>
+        <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
+        <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
       </div>
-      <a href="">&#8250;</a>
-    </div>
+
+      <div class="center" id="navButtons">
+        <a href="GJ1214b.html">&#8249;</a>
+        <button id="jumpButton">JUMP</button>
+        <a href="HD189733b.html">&#8250;</a>
+      </div>
+      
+      <div class="dropup-items" id="dropupItems" style="display: none;">
+        <h4>Planets List: </h4>
+        <a href="55Cancri-e.html">55_cancri_e637</a>
+        <a href="GJ1214b.html">GJ1214b</a>
+        <a href="Gliese1132b.html">Gliese1132b</a>
+        <a href="HD189733b.html">HD189733b</a>
+        <a href="Kepler-138c.html">Kepler-138</a>
+        <a href="Kepler10b.html">Kepler10b</a>
+        <a href="OGLE-2016-BLG-1928.html">OGLE-2016-BLG-1928</a>
+        <a href="PegasiB.html">51_pegasi_b</a>
+        <a href="TOI-1452b.html">TOI-1452</a>
+        <a href="WASP-76b.html">WASP-76b</a>
+        <h2 id="backButton">&#8249;-------- </h2>
+      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
+      
+      document.getElementById('jumpButton').addEventListener('click', function () {
+        // Hide instructions and navigation buttons
+        document.getElementById('instructions').style.display = 'none';
+        document.getElementById('navButtons').style.display = 'none';
+
+        // Show the dropup-items with the planet list
+        document.getElementById('dropupItems').style.display = 'block';
+      });
+
+      // Handle Back button click to return to instructions
+      document.getElementById('backButton').addEventListener('click', function () {
+        // Show instructions and navigation buttons again
+        document.getElementById('instructions').style.display = 'block';
+        document.getElementById('navButtons').style.display = 'flex';
+
+        // Hide the dropup-items
+        document.getElementById('dropupItems').style.display = 'none';
+      });
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
