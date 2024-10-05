@@ -92,6 +92,10 @@
         document.getElementById("myNav").style.width = "0%";
       }
 
+      function signIn() {
+        alert("Sign In clicked!");
+      }
+
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -132,10 +136,12 @@
 
       // Load GLTF model
       const loader = new THREE.GLTFLoader();
+      let model;
       loader.load(
         "3D%20Models/stylized_planet/scene.gltf",
         function (gltf) {
-          scene.add(gltf.scene);
+          model = gltf.scene;
+          scene.add(model);
         },
         undefined,
         function (error) {
@@ -144,13 +150,16 @@
       );
 
       // Camera positioning
-      camera.position.set(0, 0, 1.5);
+      camera.position.set(0, 0, 2);
       camera.lookAt(0, 0, 0);
 
       // Animation loop
       function animate() {
         requestAnimationFrame(animate);
         controls.update();
+        if (model) {
+          model.rotation.y += 0.005; // Rotate the model around its Y-axis
+        }
         renderer.render(scene, camera);
       }
       animate();
