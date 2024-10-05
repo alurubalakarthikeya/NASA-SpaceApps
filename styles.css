@@ -271,6 +271,7 @@ canvas {
 
 /* Other form-related styling (optional) */
 .sign-up-section {
+  display: flex;
   margin: 20px;
 }
 
