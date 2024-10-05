@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Model Viewer with Free Movement</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+      // Scene setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        5000 // Far clipping plane increased to allow zooming out more
+      );
+      const renderer = new THREE.WebGLRenderer({ antialias: true }); // Enable anti-aliasing
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Orbit Controls with Free Movement
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.screenSpacePanning = false;
+
+      // Ambient Light
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Lower ambient light for better visibility of the model
+      scene.add(ambientLight);
+
+      // Directional Light
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5); // Increased light intensity
+      directionalLight.position.set(5, 10, 7);
+      directionalLight.castShadow = true;
+      scene.add(directionalLight);
+
+      const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
+      directionalLight2.position.set(-5, 10, -7);
+      scene.add(directionalLight2);
+
+      // Add stars using small spheres
+      const starGeometry = new THREE.SphereGeometry(0.5, 8, 8); // Smaller sphere geometry
+      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+      for (let i = 0; i < 4445; i++) {
+        // Reduced density by 1/3rd
+        const star = new THREE.Mesh(starGeometry, starMaterial);
+        star.position.set(
+          (Math.random() - 0.5) * 2000,
+          (Math.random() - 0.5) * 2000,
+          (Math.random() - 0.5) * 2000
+        );
+        scene.add(star);
+      }
+
+      // Add planets with softer colors and shiny effects
+      const planetColors = [
+        0x87cefa, // Light blue
+        0xffb6c1, // Light pink
+        0xadd8e6, // Light blue
+        0xffc0cb, // Pink
+        0xb0e0e6, // Powder blue
+        0xd8bfd8, // Thistle
+        0xe6e6fa, // Lavender
+        0xf0e68c, // Khaki
+        0xffdab9, // Peach puff
+        0xffefd5, // Papaya whip
+        0xdda0dd, // Plum
+        0x98fb98, // Pale green
+        0xafeeee, // Pale turquoise
+        0xdb7093, // Pale violet red
+        0xffe4e1, // Misty rose
+        0xffe4b5, // Moccasin
+        0xffdead, // Navajo white
+        0xf5deb3, // Wheat
+        0xfffacd, // Lemon chiffon
+        0xe0ffff, // Light cyan
+      ];
+      const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
+
+      for (let i = 0; i < 20; i++) {
+        // 20 planets
+        const color = planetColors[i % planetColors.length];
+        const sphereMaterial = new THREE.MeshPhongMaterial({
+          color: color,
+          shininess: 100,
+        });
+        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        sphere.position.set(
+          (Math.random() - 0.5) * 5000, // Increased distance
+          (Math.random() - 0.5) * 5000,
+          (Math.random() - 0.5) * 5000
+        );
+        scene.add(sphere);
+      }
+
+      // Add suns with different colors and larger sizes
+      const sunColors = [0xffd700, 0xffa500, 0xff4500];
+      const sunGeometry = new THREE.SphereGeometry(10, 32, 32);
+
+      for (let i = 0; i < sunColors.length; i++) {
+        const sunMaterial = new THREE.MeshPhongMaterial({
+          color: sunColors[i],
+          emissive: sunColors[i],
+          emissiveIntensity: 1,
+          shininess: 100,
+        });
+        const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+        sun.position.set(
+          (Math.random() - 0.5) * 6000, // Increased distance
+          (Math.random() - 0.5) * 6000,
+          (Math.random() - 0.5) * 6000
+        );
+        scene.add(sun);
+      }
+
+      // Load GLTF models
+      const loader = new THREE.GLTFLoader();
+      let model;
+      loader.load(
+        "../3D Models/GJ1214b/scene.gltf", // Use URL-encoded path for spaces and special characters
+        function (gltf) {
+          model = gltf.scene;
+          model.scale.set(5, 5, 5); // Scale up the model by 5 times
+          scene.add(model);
+          console.log("GJ1214b model loaded and added to the scene");
+
+          // Load the larger sphere model after the Earth model is loaded
+          loader.load(
+            "../3D Models/galaxy_sphere/scene.gltf", // Replace with the path to your larger sphere model
+            function (gltf) {
+              const largeSphere = gltf.scene;
+              largeSphere.scale.set(1500, 1500, 1500); // Scale the larger sphere to the desired size
+              scene.add(largeSphere);
+              console.log("Galaxy sphere model loaded and added to the scene");
+
+              // Restrict the camera zoom-out movement
+              controls.maxDistance = 1000;
+            },
+            undefined,
+            function (error) {
+              console.error("Error loading galaxy sphere model:", error);
+            }
+          );
+        },
+        undefined,
+        function (error) {
+          console.error("Error loading GJ1214b model:", error);
+        }
+      );
+
+      // Camera positioning
+      camera.position.set(25, 35, 25); // Adjusted the camera position to a closer view
+      camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
+
+      // Animation loop
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        if (model) {
+          model.rotation.y += 0.0025; // Rotate the model around its Y-axis (increased speed by 20%)
+        }
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        renderer.setSize(width, height);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      });
+    </script>
+  </body>
+</html>
