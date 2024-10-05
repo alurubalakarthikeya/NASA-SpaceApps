@@ -1,0 +1,11 @@
+Model Information:
+* title:	Need some space?
+* source:	https://sketchfab.com/3d-models/need-some-space-d6521362b37b48e3a82bce4911409303
+* author:	Loïc Norgeot (https://sketchfab.com/norgeotloic)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Need some space?" (https://sketchfab.com/3d-models/need-some-space-d6521362b37b48e3a82bce4911409303) by Loïc Norgeot (https://sketchfab.com/norgeotloic) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

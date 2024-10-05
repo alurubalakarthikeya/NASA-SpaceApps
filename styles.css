@@ -280,13 +280,6 @@ canvas {
 .side-spacing {
   margin-left: 15px;
 }
-.sign-up-section {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 20px; /* Space between form and earth */
-}
 
 .form, .earth {
   flex: 1 1 45%; /* 45% of the width, adjusts for space between them */

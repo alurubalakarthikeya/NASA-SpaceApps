@@ -78,7 +78,6 @@
       <div class="earth">
         <!-- The 3D model will be rendered here -->
       </div>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
@@ -90,10 +89,6 @@
 
       function closeNav() {
         document.getElementById("myNav").style.width = "0%";
-      }
-
-      function signIn() {
-        alert("Sign In clicked!");
       }
 
       // Scene setup
@@ -136,12 +131,10 @@
 
       // Load GLTF model
       const loader = new THREE.GLTFLoader();
-      let model;
       loader.load(
         "3D%20Models/stylized_planet/scene.gltf",
         function (gltf) {
-          model = gltf.scene;
-          scene.add(model);
+          scene.add(gltf.scene);
         },
         undefined,
         function (error) {
@@ -157,9 +150,6 @@
       function animate() {
         requestAnimationFrame(animate);
         controls.update();
-        if (model) {
-          model.rotation.y += 0.005; // Rotate the model around its Y-axis
-        }
         renderer.render(scene, camera);
       }
       animate();
