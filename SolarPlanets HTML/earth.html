@@ -26,13 +26,13 @@
         transform: translate(-50%, -50%); /* Center the point */
         z-index: 10; /* Ensure it appears above other elements */
       }
-      
+
       /* Styles for the hover box */
       .hover-box {
         position: absolute;
-        background-color: rgba(255, 255, 255, 0.15); 
-        backdrop-filter: blur(5px); 
-        color: white; 
+        background-color: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(5px);
+        color: white;
         border: 1px solid #ccc; /* Light gray border */
         border-radius: 5px; /* Slightly rounded corners */
         padding: 10px 30px; /* Padding around the text */
@@ -42,16 +42,14 @@
         z-index: 20; /* Ensure it appears above other elements */
         opacity: 0; /* Start with 0 opacity for animation */
         transform: translateY(-40px); /* Initial position for animation */
-        transition: opacity 3s ease, transform 0.3s ease; 
+        transition: opacity 3s ease, transform 0.3s ease;
       }
-      
+
       .hover-box.active {
         display: block;
-        opacity: 1; 
-        transform: translateY(0); 
+        opacity: 1;
+        transform: translateY(0);
       }
-      
-      
     </style>
   </head>
   <body>
@@ -66,12 +64,13 @@
         <br />
         Moons: 1
         <br />
-        Earth is the third planet from the Sun and the only known planet in our solar system that supports life. 
+        Earth is the third planet from the Sun and the only known planet in our
+        solar system that supports life.
       </p>
     </div>
-    
+
     <div class="info-point"></div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -240,46 +239,44 @@
         camera.updateProjectionMatrix();
       });
 
-      
-            // Handle hover events
-            const hoverBox = document.getElementById("hoverBox");
-            const infoPoint = document.querySelector(".info-point");
-      
-            infoPoint.addEventListener("mouseenter", function () {
-              hoverBox.classList.add("active"); // Show the hover box
-            });
-      
-            infoPoint.addEventListener("mouseleave", function () {
-              hoverBox.classList.remove("active"); // Hide the hover box
-            });
-      
-            // Update the hover box position
-            function updateHoverBoxPosition(event) {
-              const mouseX = event.clientX;
-              const mouseY = event.clientY;
-              hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
-              hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
-            }
+      // Handle hover events
+      const hoverBox = document.getElementById("hoverBox");
+      const infoPoint = document.querySelector(".info-point");
 
-            // Show the hover box when clicking on the info point
-infoPoint.addEventListener("click", function () {
-  hoverBox.classList.toggle("active"); // Toggle the hover box
-});
+      infoPoint.addEventListener("mouseenter", function () {
+        hoverBox.classList.add("active"); // Show the hover box
+      });
 
-// Handle click events
-document.addEventListener("click", function (event) {
-  // Check if the click was outside the hover box and info point
-  const isClickInsideInfoPoint = infoPoint.contains(event.target);
-  const isClickInsideHoverBox = hoverBox.contains(event.target);
+      infoPoint.addEventListener("mouseleave", function () {
+        hoverBox.classList.remove("active"); // Hide the hover box
+      });
 
-  if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
-    hoverBox.classList.remove("active"); // Hide the hover box
-  }
-});
+      // Update the hover box position
+      function updateHoverBoxPosition(event) {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
+        hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
+      }
 
-      
-            // Add mouse move event listener to update hover box position
-            window.addEventListener("mousemove", updateHoverBoxPosition);
+      // Show the hover box when clicking on the info point
+      infoPoint.addEventListener("click", function () {
+        hoverBox.classList.toggle("active"); // Toggle the hover box
+      });
+
+      // Handle click events
+      document.addEventListener("click", function (event) {
+        // Check if the click was outside the hover box and info point
+        const isClickInsideInfoPoint = infoPoint.contains(event.target);
+        const isClickInsideHoverBox = hoverBox.contains(event.target);
+
+        if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
+          hoverBox.classList.remove("active"); // Hide the hover box
+        }
+      });
+
+      // Add mouse move event listener to update hover box position
+      window.addEventListener("mousemove", updateHoverBoxPosition);
     </script>
   </body>
 </html>
