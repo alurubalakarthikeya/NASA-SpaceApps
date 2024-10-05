@@ -68,7 +68,8 @@
       });
 
       const starVertices = [];
-      for (let i = 0; i < 10000; i++) {
+      for (let i = 0; i < 5000; i++) {
+        // Reduced density by half
         const x = (Math.random() - 0.5) * 2000;
         const y = (Math.random() - 0.5) * 2000;
         const z = (Math.random() - 0.5) * 2000;
@@ -148,21 +149,40 @@
       gltfLoader.load(
         "3D Models/City/bc5bb02ff6c44a2aa3c1abe0c717fec0_Textured.gltf",
         function (gltf) {
-          scene.add(gltf.scene);
+          const model = gltf.scene;
+          model.scale.set(10, 10, 10); // Scale the model up
+          scene.add(model);
 
           // Intro animation using GSAP
           gsap.fromTo(
             camera.position,
-            { x: 0, y: 100, z: 100 }, // Start position
+            { x: 150, y: 300, z: 150 }, // Start position
             {
-              x: -8,
-              y: 15,
-              z: -10,
+              x: -18,
+              y: 25,
+              z: -100,
               duration: 5,
               ease: "power2.inOut",
               onUpdate: () => {
-                camera.lookAt(gltf.scene.position);
+                camera.lookAt(model.position);
               },
+            }
+          );
+
+          // Load the larger sphere model after the main model is loaded
+          gltfLoader.load(
+            "3D Models/galaxy_sphere/scene.gltf", // Replace with the path to your larger sphere model
+            function (gltf) {
+              const largeSphere = gltf.scene;
+              largeSphere.scale.set(1500, 1500, 1500); // Scale the larger sphere to the desired size
+              scene.add(largeSphere);
+
+              // Restrict the camera zoom-out movement
+              controls.maxDistance = 520;
+            },
+            undefined,
+            function (error) {
+              console.error(error);
             }
           );
         },
