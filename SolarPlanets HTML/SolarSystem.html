@@ -12,9 +12,45 @@
       canvas {
         display: block;
       }
+      /* Loading bar styles */
+      .loading-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 400px;
+        height: 30px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        overflow: hidden;
+        z-index: 30; /* Ensure it appears above other elements */
+      }
+
+      .loading-bar {
+        height: 100%;
+        width: 0;
+        background-color: #fff;
+        border-radius: 15px;
+        transition: width 0.3s ease;
+      }
+
+      .loading-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #000;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
+    <div class="loading-container" id="loadingContainer">
+      <div class="loading-bar" id="loadingBar"></div>
+      <div class="loading-text" id="loadingText">0%</div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -143,6 +179,9 @@
             mixer.clipAction(clip).play();
           });
 
+          // Hide the loading container once the model is loaded
+          document.getElementById("loadingContainer").style.display = "none";
+
           // Load the larger sphere model after the Earth model is loaded
           loader.load(
             "../3D Models/galaxy_sphere/scene.gltf", // Replace with the path to your larger sphere model
@@ -160,7 +199,15 @@
             }
           );
         },
-        undefined,
+        function (xhr) {
+          // Update the loading bar and text based on the loading progress
+          const total = xhr.total || 1000000; // Fallback to a large number if total is not available
+          const percentComplete = (xhr.loaded / total) * 100;
+          const loadingBar = document.getElementById("loadingBar");
+          const loadingText = document.getElementById("loadingText");
+          loadingBar.style.width = `${percentComplete}%`;
+          loadingText.textContent = `${Math.round(percentComplete)}%`;
+        },
         function (error) {
           console.error(error);
         }

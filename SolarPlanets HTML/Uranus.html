@@ -26,13 +26,13 @@
         transform: translate(-50%, -50%); /* Center the point */
         z-index: 10; /* Ensure it appears above other elements */
       }
-      
+
       /* Styles for the hover box */
       .hover-box {
         position: absolute;
-        background-color: rgba(255, 255, 255, 0.15); 
-        backdrop-filter: blur(5px); 
-        color: white; 
+        background-color: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(5px);
+        color: white;
         border: 1px solid #ccc; /* Light gray border */
         border-radius: 5px; /* Slightly rounded corners */
         padding: 10px 30px; /* Padding around the text */
@@ -42,37 +42,70 @@
         z-index: 20; /* Ensure it appears above other elements */
         opacity: 0; /* Start with 0 opacity for animation */
         transform: translateY(-40px); /* Initial position for animation */
-        transition: opacity 3s ease, transform 0.3s ease; 
+        transition: opacity 3s ease, transform 0.3s ease;
       }
-      
+
       .hover-box.active {
         display: block;
-        opacity: 1; 
-        transform: translateY(0); 
+        opacity: 1;
+        transform: translateY(0);
       }
-      
-      
-      
+
+      /* Loading bar styles */
+      .loading-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 400px;
+        height: 30px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        overflow: hidden;
+        z-index: 30; /* Ensure it appears above other elements */
+      }
+
+      .loading-bar {
+        height: 100%;
+        width: 0;
+        background-color: #fff;
+        border-radius: 15px;
+        transition: width 0.3s ease;
+      }
+
+      .loading-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #000;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
     <div class="hover-box" id="hoverBox">
       <h3>Planet Name: Uranus</h3>
       <p>
-        Distance from the Sun: 1.8 billion miles
+        Distance from the Sun: 1.784 billion miles
         <br />
-        Mass: 8.681 x 10 <sup>25</sup> kg
+        Mass: 8.681 x 10^25 kg
         <br />
-        Radius: 15,759 km
+        Radius: 25,362 km
         <br />
         Moons: 27
         <br />
-        Uranus is the seventh planet from the Sun, known for its unique sideways rotation and blue-green color due to methane in its atmosphere.
+        Uranus is the seventh planet from the Sun and has a unique sideways rotation.
       </p>
-      
     </div>
-    
+
     <div class="info-point"></div>
+    <div class="loading-container" id="loadingContainer">
+      <div class="loading-bar" id="loadingBar"></div>
+      <div class="loading-text" id="loadingText">0%</</div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -192,23 +225,21 @@
         "../3D Models/Uranus/scene.gltf", // Use URL-encoded path for spaces and special characters
         function (gltf) {
           model = gltf.scene;
-          model.scale.set(0.3, 0.3, 0.3); // Scale down the Neptune model
           scene.add(model);
 
-          // Load the larger sphere model after the Neptune model is loaded
+          // Hide the loading container once the model is loaded
+          document.getElementById("loadingContainer").style.display = "none";
+
+          // Load the larger sphere model after the Uranus model is loaded
           loader.load(
             "../3D Models/galaxy_sphere/scene.gltf", // Replace with the path to your larger sphere model
             function (gltf) {
               const largeSphere = gltf.scene;
-              largeSphere.scale.set(2500, 2500, 2500); // Scale the larger sphere to the desired size
-              largeSphere.material = new THREE.MeshBasicMaterial({
-                color: 0x000000,
-                side: THREE.BackSide,
-              }); // Ensure the material is set to render the inside of the sphere
+              largeSphere.scale.set(3000, 3000, 3000); // Scale the larger sphere to the desired size
               scene.add(largeSphere);
 
               // Restrict the camera zoom-out movement
-              controls.maxDistance = 2500;
+              controls.maxDistance = 3000;
             },
             undefined,
             function (error) {
@@ -216,14 +247,22 @@
             }
           );
         },
-        undefined,
+        function (xhr) {
+          // Update the loading bar and text based on the loading progress
+          const total = xhr.total || 1000000; // Fallback to a large number if total is not available
+          const percentComplete = (xhr.loaded / total) * 100;
+          const loadingBar = document.getElementById("loadingBar");
+          const loadingText = document.getElementById("loadingText");
+          loadingBar.style.width = `${percentComplete}%`;
+          loadingText.textContent = `${Math.round(percentComplete)}%`;
+        },
         function (error) {
           console.error(error);
         }
       );
 
       // Camera positioning
-      camera.position.set(500, 55, 50); // Adjusted the camera position to a closer view
+      camera.position.set(800, 800, 800); // Adjusted the camera position to a closer view
       camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
 
       // Animation loop
@@ -246,45 +285,44 @@
         camera.updateProjectionMatrix();
       });
 
-          // Handle hover events
-          const hoverBox = document.getElementById("hoverBox");
-          const infoPoint = document.querySelector(".info-point");
-    
-          infoPoint.addEventListener("mouseenter", function () {
-            hoverBox.classList.add("active"); // Show the hover box
-          });
-    
-          infoPoint.addEventListener("mouseleave", function () {
-            hoverBox.classList.remove("active"); // Hide the hover box
-          });
-    
-          // Update the hover box position
-          function updateHoverBoxPosition(event) {
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
-            hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
-            hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
-          }
+      // Handle hover events
+      const hoverBox = document.getElementById("hoverBox");
+      const infoPoint = document.querySelector(".info-point");
 
-          // Show the hover box when clicking on the info point
-infoPoint.addEventListener("click", function () {
-hoverBox.classList.toggle("active"); // Toggle the hover box
-});
+      infoPoint.addEventListener("mouseenter", function () {
+        hoverBox.classList.add("active"); // Show the hover box
+      });
 
-// Handle click events
-document.addEventListener("click", function (event) {
-// Check if the click was outside the hover box and info point
-const isClickInsideInfoPoint = infoPoint.contains(event.target);
-const isClickInsideHoverBox = hoverBox.contains(event.target);
+      infoPoint.addEventListener("mouseleave", function () {
+        hoverBox.classList.remove("active"); // Hide the hover box
+      });
 
-if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
-  hoverBox.classList.remove("active"); // Hide the hover box
-}
-});
+      // Update the hover box position
+      function updateHoverBoxPosition(event) {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
+        hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
+      }
 
-    
-          // Add mouse move event listener to update hover box position
-          window.addEventListener("mousemove", updateHoverBoxPosition);
+      // Show the hover box when clicking on the info point
+      infoPoint.addEventListener("click", function () {
+        hoverBox.classList.toggle("active"); // Toggle the hover box
+      });
+
+      // Handle click events
+      document.addEventListener("click", function (event) {
+        // Check if the click was outside the hover box and info point
+        const isClickInsideInfoPoint = infoPoint.contains(event.target);
+        const isClickInsideHoverBox = hoverBox.contains(event.target);
+
+        if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
+          hoverBox.classList.remove("active"); // Hide the hover box
+        }
+      });
+
+      // Add mouse move event listener to update hover box position
+      window.addEventListener("mousemove", updateHoverBoxPosition);
     </script>
   </body>
 </html>
