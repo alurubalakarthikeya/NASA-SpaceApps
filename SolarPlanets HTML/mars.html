@@ -18,11 +18,12 @@
         <br />
         Moons: 2
         <br />
-        Mars is the fourth planet from the Sun, often referred to as the "Red Planet" due to its reddish appearance caused by iron oxide on its surface.
+        Mars is the fourth planet from the Sun, often referred to as the "Red
+        Planet" due to its reddish appearance caused by iron oxide on its
+        surface.
       </p>
-      
     </div>
-    
+
     <div class="info-point"></div>
     <div class="box">
       <h3>Current: Solar System</h3>
@@ -41,6 +42,12 @@
       </div>
       <a href="">&#8250;</a>
     </div>
+    </div>
+    <div class="loading-container" id="loadingContainer">
+      <div class="loading-bar" id="loadingBar"></div>
+      <div class="loading-text" id="loadingText">0%</div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -162,6 +169,9 @@
           model = gltf.scene;
           scene.add(model);
 
+          // Hide the loading container once the model is loaded
+          document.getElementById("loadingContainer").style.display = "none";
+
           // Load the larger sphere model after the Earth model is loaded
           loader.load(
             "../3D Models/galaxy_sphere/scene.gltf", // Replace with the path to your larger sphere model
@@ -179,7 +189,15 @@
             }
           );
         },
-        undefined,
+        function (xhr) {
+          // Update the loading bar and text based on the loading progress
+          const total = xhr.total || 1000000; // Fallback to a large number if total is not available
+          const percentComplete = (xhr.loaded / total) * 100;
+          const loadingBar = document.getElementById("loadingBar");
+          const loadingText = document.getElementById("loadingText");
+          loadingBar.style.width = `${percentComplete}%`;
+          loadingText.textContent = `${Math.round(percentComplete)}%`;
+        },
         function (error) {
           console.error(error);
         }
@@ -209,45 +227,44 @@
         camera.updateProjectionMatrix();
       });
 
-          // Handle hover events
-          const hoverBox = document.getElementById("hoverBox");
-          const infoPoint = document.querySelector(".info-point");
-    
-          infoPoint.addEventListener("mouseenter", function () {
-            hoverBox.classList.add("active"); // Show the hover box
-          });
-    
-          infoPoint.addEventListener("mouseleave", function () {
-            hoverBox.classList.remove("active"); // Hide the hover box
-          });
-    
-          // Update the hover box position
-          function updateHoverBoxPosition(event) {
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
-            hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
-            hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
-          }
+      // Handle hover events
+      const hoverBox = document.getElementById("hoverBox");
+      const infoPoint = document.querySelector(".info-point");
 
-          // Show the hover box when clicking on the info point
-infoPoint.addEventListener("click", function () {
-hoverBox.classList.toggle("active"); // Toggle the hover box
-});
+      infoPoint.addEventListener("mouseenter", function () {
+        hoverBox.classList.add("active"); // Show the hover box
+      });
 
-// Handle click events
-document.addEventListener("click", function (event) {
-// Check if the click was outside the hover box and info point
-const isClickInsideInfoPoint = infoPoint.contains(event.target);
-const isClickInsideHoverBox = hoverBox.contains(event.target);
+      infoPoint.addEventListener("mouseleave", function () {
+        hoverBox.classList.remove("active"); // Hide the hover box
+      });
 
-if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
-  hoverBox.classList.remove("active"); // Hide the hover box
-}
-});
+      // Update the hover box position
+      function updateHoverBoxPosition(event) {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
+        hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
+      }
 
-    
-          // Add mouse move event listener to update hover box position
-          window.addEventListener("mousemove", updateHoverBoxPosition);
+      // Show the hover box when clicking on the info point
+      infoPoint.addEventListener("click", function () {
+        hoverBox.classList.toggle("active"); // Toggle the hover box
+      });
+
+      // Handle click events
+      document.addEventListener("click", function (event) {
+        // Check if the click was outside the hover box and info point
+        const isClickInsideInfoPoint = infoPoint.contains(event.target);
+        const isClickInsideHoverBox = hoverBox.contains(event.target);
+
+        if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
+          hoverBox.classList.remove("active"); // Hide the hover box
+        }
+      });
+
+      // Add mouse move event listener to update hover box position
+      window.addEventListener("mousemove", updateHoverBoxPosition);
     </script>
   </body>
 </html>
