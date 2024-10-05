@@ -250,11 +250,13 @@
         },
         function (xhr) {
           // Update the loading bar and text based on the loading progress
-          const percentComplete = (xhr.loaded / xhr.total) * 100;
-          const loadingBar = document.getElementById("loadingBar");
-          const loadingText = document.getElementById("loadingText");
-          loadingBar.style.width = `${percentComplete}%`;
-          loadingText.textContent = `${Math.round(percentComplete)}%`;
+          if (xhr.total > 0) {
+            const percentComplete = (xhr.loaded / xhr.total) * 100;
+            const loadingBar = document.getElementById("loadingBar");
+            const loadingText = document.getElementById("loadingText");
+            loadingBar.style.width = `${percentComplete}%`;
+            loadingText.textContent = `${Math.round(percentComplete)}%`;
+          }
         },
         function (error) {
           console.error(error);
