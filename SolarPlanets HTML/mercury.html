@@ -96,7 +96,7 @@
       controls.screenSpacePanning = false;
 
       // Ambient Light
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.05); // Lower ambient light for better visibility of the model
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Lower ambient light for better visibility of the model
       scene.add(ambientLight);
 
       // Directional Light
@@ -109,28 +109,20 @@
       directionalLight2.position.set(-5, 10, -7);
       scene.add(directionalLight2);
 
-      // Add stars using Points
-      const starGeometry = new THREE.BufferGeometry();
-      const starMaterial = new THREE.PointsMaterial({
-        color: 0xffffff,
-        size: 1.5,
-      });
+      // Add stars using small spheres
+      const starGeometry = new THREE.SphereGeometry(0.5, 8, 8); // Smaller sphere geometry
+      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
-      const starVertices = [];
-      for (let i = 0; i < 6667; i++) {
-        // Decreased density by 1/3rd
-        const x = (Math.random() - 0.5) * 2000;
-        const y = (Math.random() - 0.5) * 2000;
-        const z = (Math.random() - 0.5) * 2000;
-        starVertices.push(x, y, z);
+      for (let i = 0; i < 4445; i++) {
+        // Reduced density by 1/3rd
+        const star = new THREE.Mesh(starGeometry, starMaterial);
+        star.position.set(
+          (Math.random() - 0.5) * 2000,
+          (Math.random() - 0.5) * 2000,
+          (Math.random() - 0.5) * 2000
+        );
+        scene.add(star);
       }
-
-      starGeometry.setAttribute(
-        "position",
-        new THREE.Float32BufferAttribute(starVertices, 3)
-      );
-      const stars = new THREE.Points(starGeometry, starMaterial);
-      scene.add(stars);
 
       // Add planets with softer colors and shiny effects
       const planetColors = [
@@ -193,7 +185,7 @@
         scene.add(sun);
       }
 
-      // Load GLTF model (replace with your correct path)
+      // Load GLTF models
       const loader = new THREE.GLTFLoader();
       let model;
       loader.load(
@@ -201,6 +193,23 @@
         function (gltf) {
           model = gltf.scene;
           scene.add(model);
+
+          // Load the larger sphere model after the Earth model is loaded
+          loader.load(
+            "../3D Models/galaxy_sphere/scene.gltf", // Replace with the path to your larger sphere model
+            function (gltf) {
+              const largeSphere = gltf.scene;
+              largeSphere.scale.set(1500, 1500, 1500); // Scale the larger sphere to the desired size
+              scene.add(largeSphere);
+
+              // Restrict the camera zoom-out movement
+              controls.maxDistance = 1000;
+            },
+            undefined,
+            function (error) {
+              console.error(error);
+            }
+          );
         },
         undefined,
         function (error) {
