@@ -1,0 +1,156 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "DM Sans", sans-serif;
+}
+canvas {
+  display: block;
+}
+/* Styles for the point */
+.info-point {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  width: 200px; /* Width of the point (adjusted to cover the model) */
+  height: 200px; /* Height of the point (adjusted to cover the model) */
+  background-color: rgba(255, 255, 255, 0); /* Transparent background */
+  cursor: pointer; /* Pointer cursor on hover */
+  transform: translate(-50%, -50%); /* Center the point */
+  z-index: 10; /* Ensure it appears above other elements */
+}
+
+/* Styles for the hover box */
+.hover-box {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  color: white;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 10px 30px; /* Padding around the text */
+  max-width: 200px;
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.2); /* Shadow for a slight 3D effect */
+  display: none; /* Initially hidden */
+  z-index: 20; /* Ensure it appears above other elements */
+  opacity: 0; /* Start with 0 opacity for animation */
+  transform: translateY(-40px); /* Initial position for animation */
+  transition: opacity 3s ease, transform 0.3s ease;
+}
+
+.hover-box.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading bar styles */
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 400px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 30; /* Ensure it appears above other elements */
+}
+
+.loading-bar {
+  height: 100%;
+  width: 0;
+  background-color: #fff;
+  border-radius: 15px;
+  transition: width 0.3s ease;
+}
+
+.loading-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  font-weight: bold;
+}
+      
+.box > h3 {
+  text-align: center;
+}
+
+      
+@media (max-width: 768px) {
+  body {
+    font-size: 1.5vh;
+  }
+}
+
+
+.box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 20px;
+    background-color: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(5px); 
+    color: white; 
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 10px 30px; /* Padding around the text */
+    max-width: 200px;
+    box-shadow: 0 7px 12px rgba(0, 0, 0, 0.2); /* Shadow for a slight 3D effect */
+    z-index: 20; /* Ensure it appears above other elements */
+  }
+
+a {
+  background-color: #ccc;
+  color: black;
+  padding: 5px 15px;
+  border: 1px solid black;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 3vh;
+}
+
+button {
+  background-color: #ccc;
+  padding: 10px 15px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+button:hover {
+  background-color: black;
+  color: white;
+}
+
+a:hover {
+  background-color: black;
+  color: white;
+}
+
+.dropup-items {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 12px;
+}
+
+button:hover .dropup-items {
+  display: block;
+}
+
+.center {
+  display: flex;
+  justify-content: space-between;
+}
+

@@ -4,92 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Model Viewer with Free Movement</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
-      body {
-        margin: 0;
-        overflow: hidden;
-        font-family: "DM Sans", sans-serif;
-      }
-      canvas {
-        display: block;
-      }
-      /* Styles for the point */
-      .info-point {
-        position: absolute;
-        top: 50%; /* Center vertically */
-        left: 50%; /* Center horizontally */
-        width: 200px; /* Width of the point (adjusted to cover the model) */
-        height: 200px; /* Height of the point (adjusted to cover the model) */
-        background-color: rgba(255, 255, 255, 0); /* Transparent background */
-        cursor: pointer; /* Pointer cursor on hover */
-        transform: translate(-50%, -50%); /* Center the point */
-        z-index: 10; /* Ensure it appears above other elements */
-      }
-
-      /* Styles for the hover box */
-      .hover-box {
-        position: absolute;
-        background-color: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(5px);
-        color: white;
-        border: 1px solid #ccc; /* Light gray border */
-        border-radius: 5px; /* Slightly rounded corners */
-        padding: 10px 30px; /* Padding around the text */
-        max-width: 200px;
-        box-shadow: 0 7px 12px rgba(0, 0, 0, 0.2); /* Shadow for a slight 3D effect */
-        display: none; /* Initially hidden */
-        z-index: 20; /* Ensure it appears above other elements */
-        opacity: 0; /* Start with 0 opacity for animation */
-        transform: translateY(-40px); /* Initial position for animation */
-        transition: opacity 3s ease, transform 0.3s ease;
-      }
-
-      .hover-box.active {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Loading bar styles */
-      .loading-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        max-width: 400px;
-        height: 30px;
-        background-color: rgba(255, 255, 255, 0.3);
-        border-radius: 15px;
-        overflow: hidden;
-        z-index: 30; /* Ensure it appears above other elements */
-      }
-
-      .loading-bar {
-        height: 100%;
-        width: 0;
-        background-color: #fff;
-        border-radius: 15px;
-        transition: width 0.3s ease;
-      }
-
-      .loading-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #000;
-        font-weight: bold;
-      }
-            
-      @media (max-width: 768px) {
-        body {
-          font-size: 1vh;
-        }
-      }
-    
-    </style>
+    <link rel="stylesheet" href="solarplanets.css">
   </head>
   <body>
     <div class="hover-box" id="hoverBox">
@@ -107,13 +22,28 @@
         its deep blue color and strong winds.
       </p>
     </div>
-
     <div class="info-point"></div>
     <div class="loading-container" id="loadingContainer">
       <div class="loading-bar" id="loadingBar"></div>
       <div class="loading-text" id="loadingText">0%</div>
     </div>
-
+    <div class="box">
+      <h3>Current: Solar System</h3>
+      <div class="center">
+      <a href="">&#8249;</a>
+      <button>JUMP</button>
+      <div class="dropup-items">
+        <a href="#">Mercury</a>
+        <a href="#">Venus</a>
+        <a href="#">Earth</a>
+        <a href="#">Mars</a>
+        <a href="#">Jupiter</a>
+        <a href="#">Saturn</a>
+        <a href="#">Uranus</a>
+        <a href="#">Neptune</a>
+      </div>
+      <a href="">&#8250;</a>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
