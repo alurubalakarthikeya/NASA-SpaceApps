@@ -129,12 +129,19 @@
 
       // Load GLTF models
       const loader = new THREE.GLTFLoader();
-      let model;
+      let model, mixer;
       loader.load(
-        "../3D Models/Saturn/scene.gltf", // Use URL-encoded path for spaces and special characters
+        "../3D Models/solar_system/scene.gltf", // Use URL-encoded path for spaces and special characters
         function (gltf) {
           model = gltf.scene;
+          model.scale.set(3, 3, 3); // Scale up the model by 3 times
           scene.add(model);
+
+          // Set up the animation mixer
+          mixer = new THREE.AnimationMixer(model);
+          gltf.animations.forEach((clip) => {
+            mixer.clipAction(clip).play();
+          });
 
           // Load the larger sphere model after the Earth model is loaded
           loader.load(
@@ -160,15 +167,15 @@
       );
 
       // Camera positioning
-      camera.position.set(500, 55, 50); // Adjusted the camera position to a closer view
+      camera.position.set(130, 55, 130); // Adjusted the camera position to the opposite side
       camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
 
       // Animation loop
       function animate() {
         requestAnimationFrame(animate);
         controls.update();
-        if (model) {
-          model.rotation.y += 0.0025; // Rotate the model around its Y-axis (increased speed by 20%)
+        if (mixer) {
+          mixer.update(0.01); // Update the animation mixer
         }
         renderer.render(scene, camera);
       }
