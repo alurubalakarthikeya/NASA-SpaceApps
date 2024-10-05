@@ -106,7 +106,7 @@
       // Load GLTF model
       const loader = new THREE.GLTFLoader();
       loader.load(
-        "3D%20Models/cybEarth/scene.gltf", 
+        "3D%20Models/stylized_planet/scene.gltf", 
         function (gltf) {
           scene.add(gltf.scene);
         },
@@ -117,7 +117,7 @@
       );
 
       // Camera positioning
-      camera.position.set(0, 0, 300);
+      camera.position.set(0, 0, 1.5);
       camera.lookAt(0, 0, 0);
 
       // Animation loop
