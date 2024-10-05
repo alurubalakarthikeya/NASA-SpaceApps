@@ -1,0 +1,11 @@
+Model Information:
+* title:	Venus v1.1
+* source:	https://sketchfab.com/3d-models/venus-v11-99be254b68da48d092c3b8917020c67a
+* author:	uperesito (https://sketchfab.com/uperesito)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Venus v1.1" (https://sketchfab.com/3d-models/venus-v11-99be254b68da48d092c3b8917020c67a) by uperesito (https://sketchfab.com/uperesito) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

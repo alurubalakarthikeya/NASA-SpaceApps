@@ -1,0 +1,11 @@
+Model Information:
+* title:	Realistic Saturn 8K
+* source:	https://sketchfab.com/3d-models/realistic-saturn-8k-e7a4eecf7c114d06828a044c1c4f15ae
+* author:	Shady Tex (https://sketchfab.com/ShadyTex4u)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Realistic Saturn 8K" (https://sketchfab.com/3d-models/realistic-saturn-8k-e7a4eecf7c114d06828a044c1c4f15ae) by Shady Tex (https://sketchfab.com/ShadyTex4u) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
