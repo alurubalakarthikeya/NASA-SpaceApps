@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Mercury</title>
-    <link rel="stylesheet" href="solarplanets.css">
+    <link rel="stylesheet" href="solarplanets.css" />
   </head>
   <body>
     <div class="hover-box" id="hoverBox">
@@ -24,37 +24,41 @@
     </div>
     <div class="info-point"></div>
     <!-- Mercury -->
-<div class="box">
-  <div id="instructions">
-    <h3>Current: Mercury</h3>
-    <h5>Instructions:</h5>
-    <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
-    <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
-  </div>
+    <div class="box">
+      <div id="instructions">
+        <h3>Current: Mercury</h3>
+        <h5>Instructions:</h5>
+        <h5>
+          1) Hold and move around to explore the 360 view of the planet (For
+          desktops)
+        </h5>
+        <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
+      </div>
 
-  <div class="center" id="navButtons">
-    <a href="sun.html">&#8249;</a> <!-- Loop back from Pluto to Mercury -->
-    <button id="jumpButton">JUMP</button>
-    <a href="venus.html">&#8250;</a>
-  </div>
+      <div class="center" id="navButtons">
+        <a href="sun.html">&#8249;</a>
+        <!-- Loop back from Pluto to Mercury -->
+        <button id="jumpButton">JUMP</button>
+        <a href="venus.html">&#8250;</a>
+      </div>
 
-  <div class="dropup-items" id="dropupItems" style="display: none;">
-    <h4>Planets List: </h4>
-    <a href="mercury.html">Mercury</a>
-    <a href="venus.html">Venus</a><br>
-    <a href="earth.html">Earth</a>
-    <a href="mars.html">Mars</a><br>
-    <a href="jupiter.html">Jupiter</a>
-    <a href="saturn.html">Saturn</a><br>
-    <a href="uranus.html">Uranus</a>
-    <a href="neptune.html">Neptune</a><br>
-    <a href="pluto.html">Pluto</a>
-    <a href="sun.html">Sun</a>
-    <a href="SolarSystem.html">Solar System</a>
-    
-    <h2 id="backButton">&#8249;-------- </h2>
-  </div>
-</div>
+      <div class="dropup-items" id="dropupItems" style="display: none">
+        <h4>Planets List:</h4>
+        <a href="mercury.html">Mercury</a>
+        <a href="venus.html">Venus</a><br />
+        <a href="earth.html">Earth</a>
+        <a href="mars.html">Mars</a><br />
+        <a href="jupiter.html">Jupiter</a>
+        <a href="saturn.html">Saturn</a><br />
+        <a href="uranus.html">Uranus</a>
+        <a href="neptune.html">Neptune</a><br />
+        <a href="pluto.html">Pluto</a>
+        <a href="sun.html">Sun</a>
+        <a href="SolarSystem.html">Solar System</a>
+
+        <h2 id="backButton">&#8249;--------</h2>
+      </div>
+    </div>
 
     <div class="loading-container" id="loadingContainer">
       <div class="loading-bar" id="loadingBar"></div>
@@ -64,24 +68,29 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
-      document.getElementById('jumpButton').addEventListener('click', function () {
-        // Hide instructions and navigation buttons
-        document.getElementById('instructions').style.display = 'none';
-        document.getElementById('navButtons').style.display = 'none';
+      document
+        .getElementById("jumpButton")
+        .addEventListener("click", function () {
+          // Hide instructions and navigation buttons
+          document.getElementById("instructions").style.display = "none";
+          document.getElementById("navButtons").style.display = "none";
 
-        // Show the dropup-items with the planet list
-        document.getElementById('dropupItems').style.display = 'block';
-      });
+          // Show the dropup-items with the planet list
+          document.getElementById("dropupItems").style.display = "block";
+        });
 
       // Handle Back button click to return to instructions
-      document.getElementById('backButton').addEventListener('click', function () {
-        // Show instructions and navigation buttons again
-        document.getElementById('instructions').style.display = 'block';
-        document.getElementById('navButtons').style.display = 'flex';
+      document
+        .getElementById("backButton")
+        .addEventListener("click", function () {
+          // Show instructions and navigation buttons again
+          document.getElementById("instructions").style.display = "block";
+          document.getElementById("navButtons").style.display = "flex";
 
-        // Hide the dropup-items
-        document.getElementById('dropupItems').style.display = 'none';
-      });
+          // Hide the dropup-items
+          document.getElementById("dropupItems").style.display = "none";
+        });
+
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -192,18 +201,18 @@
 
       // Load GLTF models
       const loader = new THREE.GLTFLoader();
-      let model;
+      let model, mixer;
 
-      const loadingBarContainer = document.getElementById(
-        "loadingBarContainer"
-      );
+      const loadingContainer = document.getElementById("loadingContainer");
       const loadingBar = document.getElementById("loadingBar");
+      const loadingText = document.getElementById("loadingText");
 
       function updateLoadingBar(progress) {
         loadingBar.style.width = `${progress * 100}%`;
+        loadingText.textContent = `${Math.round(progress * 100)}%`;
         if (progress === 1) {
           setTimeout(() => {
-            loadingBarContainer.style.display = "none";
+            loadingContainer.style.display = "none";
           }, 500); // Hide the loading bar after a short delay
         }
       }
@@ -213,6 +222,12 @@
         function (gltf) {
           model = gltf.scene;
           scene.add(model);
+
+          // Create an AnimationMixer and play all animations
+          mixer = new THREE.AnimationMixer(model);
+          gltf.animations.forEach((clip) => {
+            mixer.clipAction(clip).play();
+          });
 
           loader.load(
             "../3D Models/galaxy_sphere/scene.gltf",
@@ -245,8 +260,8 @@
       function animate() {
         requestAnimationFrame(animate);
         controls.update();
-        if (model) {
-          model.rotation.y += 0.0025; // Rotate the model around its Y-axis (increased speed by 20%)
+        if (mixer) {
+          mixer.update(0.01); // Update the mixer for animations
         }
         renderer.render(scene, camera);
       }
