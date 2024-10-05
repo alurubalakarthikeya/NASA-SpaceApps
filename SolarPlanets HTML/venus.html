@@ -5,16 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Model Viewer with Free Movement</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
       body {
         margin: 0;
         overflow: hidden;
+        font-family: "DM Sans", sans-serif;
       }
       canvas {
         display: block;
       }
+      /* Styles for the point */
+      .info-point {
+        position: absolute;
+        top: 50%; /* Center vertically */
+        left: 50%; /* Center horizontally */
+        width: 200px; /* Width of the point (adjusted to cover the model) */
+        height: 200px; /* Height of the point (adjusted to cover the model) */
+        background-color: rgba(255, 255, 255, 0); /* Transparent background */
+        cursor: pointer; /* Pointer cursor on hover */
+        transform: translate(-50%, -50%); /* Center the point */
+        z-index: 10; /* Ensure it appears above other elements */
+      }
+      
+      /* Styles for the hover box */
+      .hover-box {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.15); 
+        backdrop-filter: blur(5px); 
+        color: white; 
+        border: 1px solid #ccc; /* Light gray border */
+        border-radius: 5px; /* Slightly rounded corners */
+        padding: 10px 30px; /* Padding around the text */
+        max-width: 200px;
+        box-shadow: 0 7px 12px rgba(0, 0, 0, 0.2); /* Shadow for a slight 3D effect */
+        display: none; /* Initially hidden */
+        z-index: 20; /* Ensure it appears above other elements */
+        opacity: 0; /* Start with 0 opacity for animation */
+        transform: translateY(-40px); /* Initial position for animation */
+        transition: opacity 3s ease, transform 0.3s ease; 
+      }
+      
+      .hover-box.active {
+        display: block;
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+      
+      
+      
     </style>
   </head>
   <body>
+    <div class="hover-box" id="hoverBox">
+      <h3>Planet Name: Venus</h3>
+      <p>
+        Distance from the Sun: 67 million miles
+        <br />
+        Mass: 4.867 x 10 <sup>24</sup> kg
+        <br />
+        Radius: 6,051.8 km
+        <br />
+        Moons: 0
+        <br />
+        Venus is the second planet from the Sun and is similar in structure to Earth but has a thick, toxic atmosphere and surface temperatures hot enough to melt lead.
+      </p>
+      
+    </div>
+    
+    <div class="info-point"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -174,6 +232,46 @@
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
       });
+
+          // Handle hover events
+          const hoverBox = document.getElementById("hoverBox");
+          const infoPoint = document.querySelector(".info-point");
+    
+          infoPoint.addEventListener("mouseenter", function () {
+            hoverBox.classList.add("active"); // Show the hover box
+          });
+    
+          infoPoint.addEventListener("mouseleave", function () {
+            hoverBox.classList.remove("active"); // Hide the hover box
+          });
+    
+          // Update the hover box position
+          function updateHoverBoxPosition(event) {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+            hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
+            hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
+          }
+
+          // Show the hover box when clicking on the info point
+infoPoint.addEventListener("click", function () {
+hoverBox.classList.toggle("active"); // Toggle the hover box
+});
+
+// Handle click events
+document.addEventListener("click", function (event) {
+// Check if the click was outside the hover box and info point
+const isClickInsideInfoPoint = infoPoint.contains(event.target);
+const isClickInsideHoverBox = hoverBox.contains(event.target);
+
+if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
+  hoverBox.classList.remove("active"); // Hide the hover box
+}
+});
+
+    
+          // Add mouse move event listener to update hover box position
+          window.addEventListener("mousemove", updateHoverBoxPosition);
     </script>
   </body>
 </html>
