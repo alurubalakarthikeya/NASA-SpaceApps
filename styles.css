@@ -211,6 +211,14 @@ p a {
   transition: 0.5s;
 }
 
+.about:hover .about-text {
+  display: block;
+}
+
+.about-text {
+  display: none;
+}
+
 .overlay-content {
   position: relative;
   top: 25%;
@@ -313,4 +321,29 @@ canvas {
   .earth {
     height: 300px; /* Further adjust for smaller screens */
   }
+}
+
+
+/* Styles for the hover box */
+.hover-box {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  color: white;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 10px 30px; /* Padding around the text */
+  max-width: 250px;
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.2); /* Shadow for a slight 3D effect */
+  display: none; /* Initially hidden */
+  z-index: 100; /* Ensure it appears above other elements */
+  opacity: 0; /* Start with 0 opacity for animation */
+  transform: translateY(-40px); /* Initial position for animation */
+  transition: opacity 3s ease, transform 0.3s ease;
+}
+
+.hover-box.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
