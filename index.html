@@ -14,8 +14,7 @@
     <nav class="nav-bar">
       <h3>NASA Space</h3>
       <ul>
-        <li>Home</li>
-        <li>About</li>
+        <li class="info-point">About</li>
         <li>Explore</li>
         <li>Contact</li>
       </ul>
@@ -25,14 +24,18 @@
           >&times;</a
         >
         <div class="overlay-content">
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Clients</a>
+          <a class="info-point">About</a>
+          <a href="#">Explore</a>
           <a href="#">Contact</a>
         </div>
       </div>
     </nav>
-
+    <div class="hover-box" id="hoverBox">
+      <h3>About Us</h3>
+      <p>
+        We are students of second year in Dayananda Sagar University. And this project is based on exoplanets and their 3d view,  with addition to the solar planets.
+      </p>
+    </div>
     <header class="side-spacing">
       <h2 class="side-spacing introduction">
         Welcome to Space Jumpers, explore the exo-planets with visual
@@ -86,6 +89,7 @@
       function closeNav() {
         document.getElementById("myNav").style.width = "0%";
       }
+
 
       // Scene setup
       const scene = new THREE.Scene();
@@ -168,6 +172,45 @@
         alert("Please refresh the page.");
         localStorage.setItem("visited", "true");
       }
+
+       // Handle hover events
+       const hoverBox = document.getElementById("hoverBox");
+       const infoPoint = document.querySelector(".info-point");
+ 
+       infoPoint.addEventListener("mouseenter", function () {
+         hoverBox.classList.add("active"); // Show the hover box
+       });
+ 
+       infoPoint.addEventListener("mouseleave", function () {
+         hoverBox.classList.remove("active"); // Hide the hover box
+       });
+ 
+       // Update the hover box position
+       function updateHoverBoxPosition(event) {
+         const mouseX = event.clientX;
+         const mouseY = event.clientY;
+         hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
+         hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
+       }
+ 
+       // Show the hover box when clicking on the info point
+       infoPoint.addEventListener("click", function () {
+         hoverBox.classList.toggle("active"); // Toggle the hover box
+       });
+ 
+       // Handle click events
+       document.addEventListener("click", function (event) {
+         // Check if the click was outside the hover box and info point
+         const isClickInsideInfoPoint = infoPoint.contains(event.target);
+         const isClickInsideHoverBox = hoverBox.contains(event.target);
+ 
+         if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
+           hoverBox.classList.remove("active"); // Hide the hover box
+         }
+       });
+ 
+       // Add mouse move event listener to update hover box position
+       window.addEventListener("mousemove", updateHoverBoxPosition);
     </script>
   </body>
 </html>

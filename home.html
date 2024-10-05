@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Model Viewer with Outer Space Background</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
       body {
         margin: 0;
@@ -92,16 +93,25 @@
     </style>
   </head>
   <body>
-    <div id="typewriter" class="typewriter-text">Ready to Jump</div>
-    <a href="SolarPlanets HTML/earth.html" target="_parent">
-      <img
-        src="https://camo.githubusercontent.com/748433fbf833d18f543ad4bb6d8c8c4f7f340c7fe8b9706df131a525049f0c8c/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966"
-        alt="Description of image"
-        class="image-link"
-        id="imageLink"
-      />
-    </a>
-
+    <nav class="nav-bar">
+      <h3>NASA Space</h3>
+      <ul>
+        <li class="info-point">About</li>
+        <li>Explore</li>
+        <li>Contact</li>
+      </ul>
+      <i class="fa-solid fa-bars" onclick="openNav()"></i>
+      <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <div class="overlay-content">
+          <a class="info-point">About</a>
+          <a href="#">Explore</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </nav>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
