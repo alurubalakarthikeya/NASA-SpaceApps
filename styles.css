@@ -278,8 +278,7 @@ canvas {
 }
 
 /* Other form-related styling (optional) */
-
-.nav-bar {
+.sign-up-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
