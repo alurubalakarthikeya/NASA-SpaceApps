@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Solar System</title>
-    <link rel="stylesheet" href="solarplanets.css">
+    <link rel="stylesheet" href="solarplanets.css" />
   </head>
   <body>
     <div class="hover-box" id="hoverBox">
@@ -25,61 +25,70 @@
     <div class="info-point"></div>
 
     <!-- Mercury -->
-<div class="box">
-  <div id="instructions">
-    <h3>Current: Mercury</h3>
-    <h5>Instructions:</h5>
-    <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
-    <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
-  </div>
+    <div class="box">
+      <div id="instructions">
+        <h3>Current: Solar System</h3>
+        <h5>Instructions:</h5>
+        <h5>
+          1) Hold and move around to explore the 360 view of the planet (For
+          desktops)
+        </h5>
+        <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
+      </div>
 
-  <div class="center" id="navButtons">
-    <a href="pluto.html">&#8249;</a> <!-- Loop back from Pluto -->
-    <button id="jumpButton">JUMP</button>
-    <a href="sun.html">&#8250;</a>
-  </div>
+      <div class="center" id="navButtons">
+        <a href="pluto.html">&#8249;</a>
+        <!-- Loop back from Pluto -->
+        <button id="jumpButton">JUMP</button>
+        <a href="sun.html">&#8250;</a>
+      </div>
 
-  <div class="dropup-items" id="dropupItems" style="display: none;">
-    <h4>Planets List: </h4>
-    <a href="mercury.html">Mercury</a>
-    <a href="venus.html">Venus</a><br>
-    <a href="earth.html">Earth</a>
-    <a href="mars.html">Mars</a><br>
-    <a href="jupiter.html">Jupiter</a>
-    <a href="saturn.html">Saturn</a><br>
-    <a href="uranus.html">Uranus</a>
-    <a href="neptune.html">Neptune</a><br>
-    <a href="pluto.html">Pluto</a>
-    <h2 id="backButton">&#8249;-------- </h2>
-  </div>
-</div>
+      <div class="dropup-items" id="dropupItems" style="display: none">
+        <h4>Planets List:</h4>
+        <a href="mercury.html">Mercury</a>
+        <a href="venus.html">Venus</a><br />
+        <a href="earth.html">Earth</a>
+        <a href="mars.html">Mars</a><br />
+        <a href="jupiter.html">Jupiter</a>
+        <a href="saturn.html">Saturn</a><br />
+        <a href="uranus.html">Uranus</a>
+        <a href="neptune.html">Neptune</a><br />
+        <a href="pluto.html">Pluto</a>
+        <h2 id="backButton">&#8249;--------</h2>
+      </div>
+    </div>
     <div class="loading-container" id="loadingContainer">
       <div class="loading-bar" id="loadingBar"></div>
-      <div class="loading-text" id="loadingText">0%</div>
+      <div class="loading-text" id="loadingText">0%</</div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
-      document.getElementById('jumpButton').addEventListener('click', function () {
-        // Hide instructions and navigation buttons
-        document.getElementById('instructions').style.display = 'none';
-        document.getElementById('navButtons').style.display = 'none';
-
-        // Show the dropup-items with the planet list
-        document.getElementById('dropupItems').style.display = 'block';
-      });
-
+      document
+        .getElementById("jumpButton")
+        .addEventListener("click", function () {
+          // Hide instructions and navigation buttons
+          document.getElementById("instructions").style.display = "none";
+          document.getElementById("navButtons").style.display = "none";
+    
+          // Show the dropup-items with the planet list
+          document.getElementById("dropupItems").style.display = "block";
+        });
+    
       // Handle Back button click to return to instructions
-      document.getElementById('backButton').addEventListener('click', function () {
-        // Show instructions and navigation buttons again
-        document.getElementById('instructions').style.display = 'block';
-        document.getElementById('navButtons').style.display = 'flex';
-
-        // Hide the dropup-items
-        document.getElementById('dropupItems').style.display = 'none';
-      });
+      document
+        .getElementById("backButton")
+        .addEventListener("click", function () {
+          // Show instructions and navigation buttons again
+          document.getElementById("instructions").style.display = "block";
+          document.getElementById("navButtons").style.display = "flex";
+    
+          // Hide the dropup-items
+          document.getElementById("dropupItems").style.display = "none";
+        });
+    
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -91,31 +100,31 @@
       const renderer = new THREE.WebGLRenderer({ antialias: true }); // Enable anti-aliasing
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
-
+    
       // Orbit Controls with Free Movement
       const controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.dampingFactor = 0.05;
       controls.screenSpacePanning = false;
-
+    
       // Ambient Light
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // Lower ambient light for better visibility of the model
       scene.add(ambientLight);
-
+    
       // Directional Light
       const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5); // Increased light intensity
       directionalLight.position.set(5, 10, 7);
       directionalLight.castShadow = true;
       scene.add(directionalLight);
-
+    
       const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
       directionalLight2.position.set(-5, 10, -7);
       scene.add(directionalLight2);
-
+    
       // Add stars using small spheres
       const starGeometry = new THREE.SphereGeometry(0.5, 8, 8); // Smaller sphere geometry
       const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-
+    
       for (let i = 0; i < 4445; i++) {
         // Reduced density by 1/3rd
         const star = new THREE.Mesh(starGeometry, starMaterial);
@@ -126,7 +135,7 @@
         );
         scene.add(star);
       }
-
+    
       // Add planets with softer colors and shiny effects
       const planetColors = [
         0x87cefa, // Light blue
@@ -151,7 +160,7 @@
         0xe0ffff, // Light cyan
       ];
       const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
-
+    
       for (let i = 0; i < 20; i++) {
         // 20 planets
         const color = planetColors[i % planetColors.length];
@@ -167,11 +176,11 @@
         );
         scene.add(sphere);
       }
-
+    
       // Add suns with different colors and larger sizes
       const sunColors = [0xffd700, 0xffa500, 0xff4500];
       const sunGeometry = new THREE.SphereGeometry(10, 32, 32);
-
+    
       for (let i = 0; i < sunColors.length; i++) {
         const sunMaterial = new THREE.MeshPhongMaterial({
           color: sunColors[i],
@@ -187,7 +196,7 @@
         );
         scene.add(sun);
       }
-
+    
       // Load GLTF models
       const loader = new THREE.GLTFLoader();
       let model, mixer;
@@ -197,16 +206,16 @@
           model = gltf.scene;
           model.scale.set(3, 3, 3); // Scale up the model by 3 times
           scene.add(model);
-
-          // Set up the animation mixer
+    
+          // Create an AnimationMixer and play all animations
           mixer = new THREE.AnimationMixer(model);
           gltf.animations.forEach((clip) => {
             mixer.clipAction(clip).play();
           });
-
+    
           // Hide the loading container once the model is loaded
           document.getElementById("loadingContainer").style.display = "none";
-
+    
           // Load the larger sphere model after the Earth model is loaded
           loader.load(
             "../3D Models/galaxy_sphere/scene.gltf", // Replace with the path to your larger sphere model
@@ -214,7 +223,7 @@
               const largeSphere = gltf.scene;
               largeSphere.scale.set(1500, 1500, 1500); // Scale the larger sphere to the desired size
               scene.add(largeSphere);
-
+    
               // Restrict the camera zoom-out movement
               controls.maxDistance = 1000;
             },
@@ -230,29 +239,29 @@
           const percentComplete = (xhr.loaded / total) * 100;
           const loadingBar = document.getElementById("loadingBar");
           const loadingText = document.getElementById("loadingText");
-          loadingBar.style.width = ${percentComplete}%;
-          loadingText.textContent = ${Math.round(percentComplete)}%;
+          loadingBar.style.width = `${percentComplete}%`;
+          loadingText.textContent = `${Math.round(percentComplete)}%`;
         },
         function (error) {
           console.error(error);
         }
       );
-
+    
       // Camera positioning
-      camera.position.set(130, 55, 130); // Adjusted the camera position to the opposite side
+      camera.position.set(150, 100, 150); // Adjusted the camera position to a closer view
       camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
-
+    
       // Animation loop
       function animate() {
         requestAnimationFrame(animate);
         controls.update();
         if (mixer) {
-          mixer.update(0.01); // Update the animation mixer
+          mixer.update(0.01); // Update the mixer for animations
         }
         renderer.render(scene, camera);
       }
       animate();
-
+    
       // Handle window resize
       window.addEventListener("resize", () => {
         const width = window.innerWidth;
@@ -261,42 +270,43 @@
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
       });
-
+    
+      // Handle hover events
       const hoverBox = document.getElementById("hoverBox");
       const infoPoint = document.querySelector(".info-point");
-
+    
       infoPoint.addEventListener("mouseenter", function () {
         hoverBox.classList.add("active"); // Show the hover box
       });
-
+    
       infoPoint.addEventListener("mouseleave", function () {
         hoverBox.classList.remove("active"); // Hide the hover box
       });
-
+    
       // Update the hover box position
       function updateHoverBoxPosition(event) {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
-        hoverBox.style.left = ${mouseX + 20}px; // Position with some offset
-        hoverBox.style.top = ${mouseY - 20}px; // Position with some offset
+        hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
+        hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
       }
-
+    
       // Show the hover box when clicking on the info point
       infoPoint.addEventListener("click", function () {
         hoverBox.classList.toggle("active"); // Toggle the hover box
       });
-
+    
       // Handle click events
       document.addEventListener("click", function (event) {
         // Check if the click was outside the hover box and info point
         const isClickInsideInfoPoint = infoPoint.contains(event.target);
         const isClickInsideHoverBox = hoverBox.contains(event.target);
-
+    
         if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
           hoverBox.classList.remove("active"); // Hide the hover box
         }
       });
-
+    
       // Add mouse move event listener to update hover box position
       window.addEventListener("mousemove", updateHoverBoxPosition);
     </script>

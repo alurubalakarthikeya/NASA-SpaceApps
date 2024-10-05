@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Saturn</title>
-    <link rel="stylesheet" href="solarplanets.css">
+    <link rel="stylesheet" href="solarplanets.css" />
   </head>
   <body>
     <div class="hover-box" id="hoverBox">
@@ -28,33 +28,36 @@
       <div id="instructions">
         <h3>Current: Saturn</h3>
         <h5>Instructions:</h5>
-        <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
+        <h5>
+          1) Hold and move around to explore the 360 view of the planet (For
+          desktops)
+        </h5>
         <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
       </div>
-    
+
       <div class="center" id="navButtons">
         <a href="jupiter.html">&#8249;</a>
         <button id="jumpButton">JUMP</button>
         <a href="uranus.html">&#8250;</a>
       </div>
-    
-      <div class="dropup-items" id="dropupItems" style="display: none;">
-        <h4>Planets List: </h4>
+
+      <div class="dropup-items" id="dropupItems" style="display: none">
+        <h4>Planets List:</h4>
         <a href="mercury.html">Mercury</a>
-        <a href="venus.html">Venus</a><br>
+        <a href="venus.html">Venus</a><br />
         <a href="earth.html">Earth</a>
-        <a href="mars.html">Mars</a><br>
+        <a href="mars.html">Mars</a><br />
         <a href="jupiter.html">Jupiter</a>
-        <a href="saturn.html">Saturn</a><br>
+        <a href="saturn.html">Saturn</a><br />
         <a href="uranus.html">Uranus</a>
-        <a href="neptune.html">Neptune</a><br>
+        <a href="neptune.html">Neptune</a><br />
         <a href="pluto.html">Pluto</a>
         <a href="sun.html">Sun</a>
         <a href="SolarSystem.html">Solar System</a>
-        <h2 id="backButton">&#8249;-------- </h2>
+        <h2 id="backButton">&#8249;--------</h2>
       </div>
     </div>
-    
+
     <div class="loading-container" id="loadingContainer">
       <div class="loading-bar" id="loadingBar"></div>
       <div class="loading-text" id="loadingText">0%</div>
@@ -64,24 +67,28 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
-      document.getElementById('jumpButton').addEventListener('click', function () {
-        // Hide instructions and navigation buttons
-        document.getElementById('instructions').style.display = 'none';
-        document.getElementById('navButtons').style.display = 'none';
+      document
+        .getElementById("jumpButton")
+        .addEventListener("click", function () {
+          // Hide instructions and navigation buttons
+          document.getElementById("instructions").style.display = "none";
+          document.getElementById("navButtons").style.display = "none";
 
-        // Show the dropup-items with the planet list
-        document.getElementById('dropupItems').style.display = 'block';
-      });
+          // Show the dropup-items with the planet list
+          document.getElementById("dropupItems").style.display = "block";
+        });
 
       // Handle Back button click to return to instructions
-      document.getElementById('backButton').addEventListener('click', function () {
-        // Show instructions and navigation buttons again
-        document.getElementById('instructions').style.display = 'block';
-        document.getElementById('navButtons').style.display = 'flex';
+      document
+        .getElementById("backButton")
+        .addEventListener("click", function () {
+          // Show instructions and navigation buttons again
+          document.getElementById("instructions").style.display = "block";
+          document.getElementById("navButtons").style.display = "flex";
 
-        // Hide the dropup-items
-        document.getElementById('dropupItems').style.display = 'none';
-      });
+          // Hide the dropup-items
+          document.getElementById("dropupItems").style.display = "none";
+        });
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -234,7 +241,7 @@
       );
 
       // Camera positioning
-      camera.position.set(500, 55, 50); // Adjusted the camera position to a closer view
+      camera.position.set(40, 50, 40); // Adjusted the camera position to a closer view
       camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
 
       // Animation loop
