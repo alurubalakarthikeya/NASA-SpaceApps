@@ -25,24 +25,38 @@
     </div>
 
     <div class="info-point"></div>
-    <div class="box">
-      <h3>Current: Mars</h3>
-      <div class="center">
-      <a href="earth.html">&#8249;</a>
-      <button>JUMP</button>
-      <div class="dropup-items">
-        <a href="#">Mercury</a>
-        <a href="#">Venus</a>
-        <a href="#">Earth</a>
-        <a href="#">Jupiter</a>
-        <a href="#">Saturn</a>
-        <a href="#">Uranus</a>
-        <a href="#">Neptune</a>
-        <a href="#">Pluto</a>
-      </div>
-      <a href="jupiter.html">&#8250;</a>
-    </div>
-    </div>
+<!-- Mars -->
+<div class="box">
+  <div id="instructions">
+    <h3>Current: Mars</h3>
+    <h5>Instructions:</h5>
+    <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
+    <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
+  </div>
+
+  <div class="center" id="navButtons">
+    <a href="earth.html">&#8249;</a>
+    <button id="jumpButton">JUMP</button>
+    <a href="jupiter.html">&#8250;</a>
+  </div>
+
+  <div class="dropup-items" id="dropupItems" style="display: none;">
+    <h4>Planets List: </h4>
+    <a href="mercury.html">Mercury</a>
+    <a href="venus.html">Venus</a><br>
+    <a href="earth.html">Earth</a>
+    <a href="mars.html">Mars</a><br>
+    <a href="jupiter.html">Jupiter</a>
+    <a href="saturn.html">Saturn</a><br>
+    <a href="uranus.html">Uranus</a>
+    <a href="neptune.html">Neptune</a><br>
+    <a href="pluto.html">Pluto</a>
+    <a href="sun.html">Sun</a>
+    <a href="SolarSystem.html">Solar System</a>
+    <h2 id="backButton">&#8249;-------- </h2>
+  </div>
+</div>
+
     <div class="loading-container" id="loadingContainer">
       <div class="loading-bar" id="loadingBar"></div>
       <div class="loading-text" id="loadingText">0%</div>
@@ -52,6 +66,24 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
+      document.getElementById('jumpButton').addEventListener('click', function () {
+        // Hide instructions and navigation buttons
+        document.getElementById('instructions').style.display = 'none';
+        document.getElementById('navButtons').style.display = 'none';
+
+        // Show the dropup-items with the planet list
+        document.getElementById('dropupItems').style.display = 'block';
+      });
+
+      // Handle Back button click to return to instructions
+      document.getElementById('backButton').addEventListener('click', function () {
+        // Show instructions and navigation buttons again
+        document.getElementById('instructions').style.display = 'block';
+        document.getElementById('navButtons').style.display = 'flex';
+
+        // Hide the dropup-items
+        document.getElementById('dropupItems').style.display = 'none';
+      });
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(

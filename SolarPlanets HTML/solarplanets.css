@@ -99,12 +99,12 @@ canvas {
     border: 1px solid #ccc; /* Light gray border */
     border-radius: 5px; /* Slightly rounded corners */
     padding: 10px 30px; /* Padding around the text */
-    max-width: 200px;
+    max-width: 220px;
     box-shadow: 0 7px 12px rgba(0, 0, 0, 0.2); /* Shadow for a slight 3D effect */
     z-index: 20; /* Ensure it appears above other elements */
   }
 
-a {
+.center > a {
   background-color: #ccc;
   color: black;
   padding: 5px 15px;
@@ -125,24 +125,18 @@ button:hover {
   color: white;
 }
 
+h2 {
+    cursor: po;
+}
+
+.dropup-items > a {
+    color: white;
+    margin: 10px;
+}
+
 a:hover {
   background-color: black;
   color: white;
-}
-
-.dropup-items {
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  margin-top: 12px;
 }
 
 button:hover .dropup-items {
@@ -151,6 +145,7 @@ button:hover .dropup-items {
 
 .center {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 35px;
 }
 

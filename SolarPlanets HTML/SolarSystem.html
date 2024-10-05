@@ -24,24 +24,35 @@
 
     <div class="info-point"></div>
 
-    <div class="box">
-      <h3>Current: Solar System</h3>
-      <div class="center">
-      <a href="pluto.html">&#8249;</a>
-      <button>JUMP</button>
-      <div class="dropup-items">
-        <a href="#">Mercury</a>
-        <a href="#">Venus</a>
-        <a href="#">Earth</a>
-        <a href="#">Mars</a>
-        <a href="#">Jupiter</a>
-        <a href="#">Saturn</a>
-        <a href="#">Uranus</a>
-        <a href="#">Neptune</a>
-      </div>
-      <a href="sun.html">&#8250;</a>
-    </div>
-    </div>
+    <!-- Mercury -->
+<div class="box">
+  <div id="instructions">
+    <h3>Current: Mercury</h3>
+    <h5>Instructions:</h5>
+    <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
+    <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
+  </div>
+
+  <div class="center" id="navButtons">
+    <a href="pluto.html">&#8249;</a> <!-- Loop back from Pluto -->
+    <button id="jumpButton">JUMP</button>
+    <a href="sun.html">&#8250;</a>
+  </div>
+
+  <div class="dropup-items" id="dropupItems" style="display: none;">
+    <h4>Planets List: </h4>
+    <a href="mercury.html">Mercury</a>
+    <a href="venus.html">Venus</a><br>
+    <a href="earth.html">Earth</a>
+    <a href="mars.html">Mars</a><br>
+    <a href="jupiter.html">Jupiter</a>
+    <a href="saturn.html">Saturn</a><br>
+    <a href="uranus.html">Uranus</a>
+    <a href="neptune.html">Neptune</a><br>
+    <a href="pluto.html">Pluto</a>
+    <h2 id="backButton">&#8249;-------- </h2>
+  </div>
+</div>
     <div class="loading-container" id="loadingContainer">
       <div class="loading-bar" id="loadingBar"></div>
       <div class="loading-text" id="loadingText">0%</div>
@@ -51,6 +62,24 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
+      document.getElementById('jumpButton').addEventListener('click', function () {
+        // Hide instructions and navigation buttons
+        document.getElementById('instructions').style.display = 'none';
+        document.getElementById('navButtons').style.display = 'none';
+
+        // Show the dropup-items with the planet list
+        document.getElementById('dropupItems').style.display = 'block';
+      });
+
+      // Handle Back button click to return to instructions
+      document.getElementById('backButton').addEventListener('click', function () {
+        // Show instructions and navigation buttons again
+        document.getElementById('instructions').style.display = 'block';
+        document.getElementById('navButtons').style.display = 'flex';
+
+        // Hide the dropup-items
+        document.getElementById('dropupItems').style.display = 'none';
+      });
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -201,8 +230,8 @@
           const percentComplete = (xhr.loaded / total) * 100;
           const loadingBar = document.getElementById("loadingBar");
           const loadingText = document.getElementById("loadingText");
-          loadingBar.style.width = `${percentComplete}%`;
-          loadingText.textContent = `${Math.round(percentComplete)}%`;
+          loadingBar.style.width = ${percentComplete}%;
+          loadingText.textContent = ${Math.round(percentComplete)}%;
         },
         function (error) {
           console.error(error);
@@ -248,8 +277,8 @@
       function updateHoverBoxPosition(event) {
         const mouseX = event.clientX;
         const mouseY = event.clientY;
-        hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
-        hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
+        hoverBox.style.left = ${mouseX + 20}px; // Position with some offset
+        hoverBox.style.top = ${mouseY - 20}px; // Position with some offset
       }
 
       // Show the hover box when clicking on the info point
