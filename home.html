@@ -8,13 +8,100 @@
       body {
         margin: 0;
         overflow: hidden;
+        font-family: "Courier New", Courier, monospace;
+        background-color: black;
       }
+
       canvas {
         display: block;
+      }
+
+      /* Styling for the typewriter text */
+      .typewriter-text {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #00ffea;
+        font-size: 3rem;
+        font-family: "Orbitron", sans-serif;
+        letter-spacing: 0.1rem;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid rgba(0, 255, 234, 0.75);
+        width: 0;
+        opacity: 0;
+        text-shadow: 0 0 15px rgba(0, 255, 234, 0.5),
+          0 0 25px rgba(0, 255, 234, 0.75), 0 0 40px rgba(0, 255, 234, 1);
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 14ch; /* Length of "Ready to Jump" */
+        }
+      }
+
+      @keyframes blink {
+        0% {
+          border-color: rgba(0, 255, 234, 0.75);
+        }
+        50% {
+          border-color: transparent;
+        }
+        100% {
+          border-color: rgba(0, 255, 234, 0.75);
+        }
+      }
+
+      @keyframes glow {
+        0%,
+        100% {
+          text-shadow: 0 0 15px rgba(0, 255, 234, 0.5),
+            0 0 25px rgba(0, 255, 234, 0.75), 0 0 40px rgba(0, 255, 234, 1);
+        }
+        50% {
+          text-shadow: 0 0 30px rgba(0, 255, 234, 1),
+            0 0 50px rgba(0, 255, 234, 1.5), 0 0 80px rgba(0, 255, 234, 2);
+        }
+      }
+
+      .typewriter-active {
+        opacity: 1;
+        animation: typing 3s steps(14) forwards, blink 0.75s step-end infinite,
+          glow 2.5s ease-in-out infinite;
+      }
+
+      /* Styling for the image */
+      .image-link {
+        position: absolute;
+        top: 35%; /* Adjust as needed for spacing */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 150px; /* Adjust to your desired size */
+        height: auto; /* Maintain aspect ratio */
+        opacity: 0; /* Start hidden */
+        transition: opacity 1s; /* Fade in effect */
+      }
+
+      .image-link.visible {
+        opacity: 1; /* Show the image when the class is added */
       }
     </style>
   </head>
   <body>
+    <div id="typewriter" class="typewriter-text">Ready to Jump</div>
+    <a href="SolarPlanets HTML/earth.html" target="_parent">
+      <img
+        src="https://camo.githubusercontent.com/748433fbf833d18f543ad4bb6d8c8c4f7f340c7fe8b9706df131a525049f0c8c/68747470733a2f2f63756c746f667468657061727479706172726f742e636f6d2f706172726f74732f68642f6c6170746f705f706172726f742e676966"
+        alt="Description of image"
+        class="image-link"
+        id="imageLink"
+      />
+    </a>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -30,7 +117,7 @@
       );
       const renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(window.devicePixelRatio); // Ensure high DPI displays are handled
+      renderer.setPixelRatio(window.devicePixelRatio);
       document.body.appendChild(renderer.domElement);
 
       // Load space texture for background
@@ -44,7 +131,7 @@
       controls.enableDamping = true;
       controls.dampingFactor = 0.05;
       controls.screenSpacePanning = false;
-      controls.maxPolarAngle = Math.PI; // Allow looking below the model
+      controls.maxPolarAngle = Math.PI;
 
       // Ambient Light
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
@@ -69,7 +156,6 @@
 
       const starVertices = [];
       for (let i = 0; i < 5000; i++) {
-        // Reduced density by half
         const x = (Math.random() - 0.5) * 2000;
         const y = (Math.random() - 0.5) * 2000;
         const z = (Math.random() - 0.5) * 2000;
@@ -83,33 +169,15 @@
       const stars = new THREE.Points(starGeometry, starMaterial);
       scene.add(stars);
 
-      // Add planets with softer colors and shiny effects
+      // Add planets
       const planetColors = [
-        0x87cefa, // Light blue
-        0xffb6c1, // Light pink
-        0xadd8e6, // Light blue
-        0xffc0cb, // Pink
-        0xb0e0e6, // Powder blue
-        0xd8bfd8, // Thistle
-        0xe6e6fa, // Lavender
-        0xf0e68c, // Khaki
-        0xffdab9, // Peach puff
-        0xffefd5, // Papaya whip
-        0xdda0dd, // Plum
-        0x98fb98, // Pale green
-        0xafeeee, // Pale turquoise
-        0xdb7093, // Pale violet red
-        0xffe4e1, // Misty rose
-        0xffe4b5, // Moccasin
-        0xffdead, // Navajo white
-        0xf5deb3, // Wheat
-        0xfffacd, // Lemon chiffon
-        0xe0ffff, // Light cyan
+        0x87cefa, 0xffb6c1, 0xadd8e6, 0xffc0cb, 0xb0e0e6, 0xd8bfd8, 0xe6e6fa,
+        0xf0e68c, 0xffdab9, 0xffefd5, 0xdda0dd, 0x98fb98, 0xafeeee, 0xdb7093,
+        0xffe4e1, 0xffe4b5, 0xffdead, 0xf5deb3, 0xfffacd, 0xe0ffff,
       ];
       const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
 
       for (let i = 0; i < 20; i++) {
-        // 20 planets
         const color = planetColors[i % planetColors.length];
         const sphereMaterial = new THREE.MeshPhongMaterial({
           color: color,
@@ -117,14 +185,14 @@
         });
         const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
         sphere.position.set(
-          (Math.random() - 0.5) * 5000, // Increased distance
+          (Math.random() - 0.5) * 5000,
           (Math.random() - 0.5) * 5000,
           (Math.random() - 0.5) * 5000
         );
         scene.add(sphere);
       }
 
-      // Add suns with different colors and larger sizes
+      // Add suns
       const sunColors = [0xffd700, 0xffa500, 0xff4500];
       const sunGeometry = new THREE.SphereGeometry(10, 32, 32);
 
@@ -137,7 +205,7 @@
         });
         const sun = new THREE.Mesh(sunGeometry, sunMaterial);
         sun.position.set(
-          (Math.random() - 0.5) * 6000, // Increased distance
+          (Math.random() - 0.5) * 6000,
           (Math.random() - 0.5) * 6000,
           (Math.random() - 0.5) * 6000
         );
@@ -166,18 +234,25 @@
               onUpdate: () => {
                 camera.lookAt(model.position);
               },
+              onComplete: () => {
+                // Trigger the typing effect after the animation completes
+                const typewriter = document.getElementById("typewriter");
+                typewriter.classList.add("typewriter-active");
+
+                // Show the image after typing is done
+                const imageLink = document.getElementById("imageLink");
+                imageLink.classList.add("visible");
+              },
             }
           );
 
           // Load the larger sphere model after the main model is loaded
           gltfLoader.load(
-            "3D Models/galaxy_sphere/scene.gltf", // Replace with the path to your larger sphere model
+            "3D Models/galaxy_sphere/scene.gltf",
             function (gltf) {
               const largeSphere = gltf.scene;
-              largeSphere.scale.set(1500, 1500, 1500); // Scale the larger sphere to the desired size
+              largeSphere.scale.set(1500, 1500, 1500);
               scene.add(largeSphere);
-
-              // Restrict the camera zoom-out movement
               controls.maxDistance = 520;
             },
             undefined,
@@ -193,8 +268,8 @@
       );
 
       // Camera positioning
-      camera.position.set(-8, 15, -10); // Default camera position
-      camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
+      camera.position.set(-8, 15, -10);
+      camera.lookAt(0, 0, 0);
 
       // Animation loop
       function animate() {
