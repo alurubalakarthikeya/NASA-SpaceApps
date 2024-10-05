@@ -20,10 +20,10 @@
         <div id="myNav" class="overlay">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="overlay-content">
-              <a href="#">About</a>
-              <a href="#">Services</a>
-              <a href="#">Clients</a>
-              <a href="#">Contact</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
             </div>
         </div>
     </nav>
@@ -34,28 +34,28 @@
 
     <div class="sign-up-section">
         <div class="form">
-        <form action="">
-            <fieldset>
-                <legend id="signInUp">Sign Up</legend>
-                <div class="form-group removeName">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div> 
-                <br>
-                <div class="form-group">
-                    <input type="submit">
-                    <p id="signOption">Already have an account? <a href="" onclick="singIn()">Sign In</a></p>
-                </div>
-            </fieldset>
-        </form>
+            <form action="">
+                <fieldset>
+                    <legend id="signInUp">Sign Up</legend>
+                    <div class="form-group removeName">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div> 
+                    <br>
+                    <div class="form-group">
+                        <input type="submit">
+                        <p id="signOption">Already have an account? <a href="#" onclick="signIn()">Sign In</a></p>
+                    </div>
+                </fieldset>
+            </form>
         </div>
         <div class="earth">
             <!-- The 3D model will be rendered here -->
@@ -66,10 +66,18 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
+      function openNav() {
+          document.getElementById("myNav").style.width = "100%";
+      }
+
+      function closeNav() {
+          document.getElementById("myNav").style.width = "0%";
+      }
+
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true }); // Alpha for transparent background
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setClearColor(0x000000, 0); // Set clear color to transparent
       renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -98,7 +106,7 @@
       // Load GLTF model
       const loader = new THREE.GLTFLoader();
       loader.load(
-        "3D%20Models/cybEarth/scene.gltf", 
+        "3D%20Models/stylized_planet/scene.gltf", 
         function (gltf) {
           scene.add(gltf.scene);
         },
@@ -109,7 +117,7 @@
       );
 
       // Camera positioning
-      camera.position.set(500, 55, 50);
+      camera.position.set(0, 0, 1.5);
       camera.lookAt(0, 0, 0);
 
       // Animation loop
@@ -132,4 +140,3 @@
     </script>
 </body>
 </html>
-
