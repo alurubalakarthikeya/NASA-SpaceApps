@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Mercury</title>
+    <title>3D Earth</title>
     <link rel="stylesheet" href="solarplanets.css" />
     <link rel="icon" type="image/png" href="../Media/planets.png" />
   </head>
@@ -73,10 +73,6 @@
       </div>
     </div>
 
-    <div class="loading-container" id="loadingContainer">
-      <div class="loading-bar" id="loadingBar"></div>
-      <div class="loading-text" id="loadingText">0%</div>
-    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -103,7 +99,6 @@
           // Hide the dropup-items
           document.getElementById("dropupItems").style.display = "none";
         });
-
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -214,22 +209,7 @@
 
       // Load GLTF models
       const loader = new THREE.GLTFLoader();
-      let model, mixer;
-
-      const loadingContainer = document.getElementById("loadingContainer");
-      const loadingBar = document.getElementById("loadingBar");
-      const loadingText = document.getElementById("loadingText");
-
-      function updateLoadingBar(progress) {
-        loadingBar.style.width = `${progress * 100}%`;
-        loadingText.textContent = `${Math.round(progress * 100)}%`;
-        if (progress === 1) {
-          setTimeout(() => {
-            loadingContainer.style.display = "none";
-          }, 500); // Hide the loading bar after a short delay
-        }
-      }
-
+      let model;
       loader.load(
         "../3D Models/Mercury/scene.gltf",
         function (gltf) {
@@ -266,15 +246,15 @@
       );
 
       // Camera positioning
-      camera.position.set(15, 10, 15); // Adjusted the camera position to a closer view
+      camera.position.set(10, 20, 10); // Adjusted the camera position to a closer view
       camera.lookAt(0, 0, 0); // Ensure the camera looks at the model
 
       // Animation loop
       function animate() {
         requestAnimationFrame(animate);
         controls.update();
-        if (mixer) {
-          mixer.update(0.075); // Update the mixer for animations
+        if (model) {
+          model.rotation.y += 0.0025; // Rotate the model around its Y-axis (increased speed by 20%)
         }
         renderer.render(scene, camera);
       }
