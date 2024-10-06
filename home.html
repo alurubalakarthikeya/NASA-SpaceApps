@@ -23,17 +23,16 @@
         top: 20%;
         left: 50%;
         transform: translateX(-50%);
-        color: #00ffea;
+        color: #ffffff;
         font-size: 3rem;
         font-family: "Orbitron", sans-serif;
         letter-spacing: 0.1rem;
         white-space: nowrap;
         overflow: hidden;
-        border-right: 3px solid rgba(0, 255, 234, 0.75);
+        border-right: 3px solid rgba(255, 255, 255, 0.75);
         width: 0;
         opacity: 0;
-        text-shadow: 0 0 15px rgba(0, 255, 234, 0.5),
-          0 0 25px rgba(0, 255, 234, 0.75), 0 0 40px rgba(0, 255, 234, 1);
+       
       }
 
       @keyframes typing {
@@ -41,38 +40,27 @@
           width: 0;
         }
         to {
-          width: 14ch; /* Length of "Ready to Jump" */
+          width: 15ch; /* Length of "Ready to Jump" */
         }
       }
 
       @keyframes blink {
         0% {
-          border-color: rgba(0, 255, 234, 0.75);
+          border-color: rgba(255, 255, 255, 0.75);
         }
         50% {
           border-color: transparent;
         }
         100% {
-          border-color: rgba(0, 255, 234, 0.75);
-        }
-      }
-
-      @keyframes glow {
-        0%,
-        100% {
-          text-shadow: 0 0 15px rgba(0, 255, 234, 0.5),
-            0 0 25px rgba(0, 255, 234, 0.75), 0 0 40px rgba(0, 255, 234, 1);
-        }
-        50% {
-          text-shadow: 0 0 30px rgba(0, 255, 234, 1),
-            0 0 50px rgba(0, 255, 234, 1.5), 0 0 80px rgba(0, 255, 234, 2);
+          border-color: rgba(255, 255, 255, 0.75);
         }
       }
 
       .typewriter-active {
+        top: 45%;
+        text-align: center;
         opacity: 1;
-        animation: typing 3s steps(14) forwards, blink 0.75s step-end infinite,
-          glow 2.5s ease-in-out infinite;
+        animation: typing 3s steps(14) forwards, blink 0.75s step-end infinite;
       }
 
       /* Styling for the image */
@@ -90,6 +78,21 @@
       .image-link.visible {
         opacity: 1; /* Show the image when the class is added */
       }
+
+      .button {
+        font-family: "DM Sans", sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        padding: 10px 40%;
+        border: 2px solid black;
+        border-radius: 5px;
+      }
+
+      .button:hover {
+        background-color: #000000;
+        color: #ffffff;
+        border: 2px solid white;
+      }
     </style>
   </head>
   <body>
@@ -98,7 +101,7 @@
       <ul>
         <li class="info-point">About</li>
         <li>Explore</li>
-        <li>Contact</li>
+        <li  class="info-point">Contact</li>
       </ul>
       <i class="fa-solid fa-bars" onclick="openNav()"></i>
       <div id="myNav" class="overlay">
@@ -118,6 +121,17 @@
         We are students of second year in Dayananda Sagar University. And this project is based on exoplanets and their 3d view,  with addition to the solar planets.
       </p>
     </div>
+
+    <div class="hover-box" id="hoverBox">
+      <h3>Contact Us</h3>
+      <p>
+        Email: johndoe@example.com<br />
+        Phone: 123-456-7890
+      </p>
+    </div>
+
+    <div class="typewriter-text typewriter-active">Ready to Jump?<br>
+      <a href="transition1.html"><button class="button">Jump</button></a></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
