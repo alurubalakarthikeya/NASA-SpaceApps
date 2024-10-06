@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <title>3D Model Viewer with Outer Space Background</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
       body {
         margin: 0;
@@ -93,28 +93,70 @@
         color: #ffffff;
         border: 2px solid white;
       }
+
+      .overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
     </style>
+  <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <nav class="nav-bar">
       <h3>NASA Space</h3>
       <ul>
-        <li class="info-point">About</li>
-        <li>Explore</li>
-        <li  class="info-point">Contact</li>
+          <li>Home</li>
+          <li>About</li>
+          <li>Explore</li>
+          <li>Contact</li>
       </ul>
       <i class="fa-solid fa-bars" onclick="openNav()"></i>
       <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-          >&times;</a
-        >
-        <div class="overlay-content">
-          <a class="info-point">About</a>
-          <a href="#">Explore</a>
-          <a href="#">Contact</a>
-        </div>
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <div class="overlay-content">
+              <a class="info-point">About</a>
+              <a href="#">Explore</a>
+              <a href="#">Contact</a>
+          </div>
       </div>
-    </nav>
+  </nav>
     <div class="hover-box" id="hoverBox">
       <h3>About Us</h3>
       <p>
@@ -130,14 +172,13 @@
       </p>
     </div>
 
-    <div class="typewriter-text typewriter-active">Ready to Jump?<br>
-      <a href="transition1.html"><button class="button">Jump</button></a></div>
+    <div class="typewriter-text typewriter-active">Ready to Jump?<br> <br>
+      <button><a href="SolarPlanets HTML/earth.html">Jump</a></button></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script>
-
         // Handle hover events
         const hoverBox = document.getElementById("hoverBox");
         const infoPoint = document.querySelector(".info-point");
@@ -356,6 +397,14 @@
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
       });
+
+      function openNav() {
+          document.getElementById("myNav").style.width = "100%";
+      }
+
+      function closeNav() {
+          document.getElementById("myNav").style.width = "0%";
+      }
     </script>
   </body>
 </html>
