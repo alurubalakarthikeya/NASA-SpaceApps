@@ -4,13 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D Earth</title>
-    <link rel="stylesheet" href="solarplanets.css">
+    <link rel="stylesheet" href="solarplanets.css" />
+    <link rel="icon" type="image/png" href="../Media/planets.png" />
   </head>
   <body>
-    <button class="redirect"> <a href="../ExoPlanets HTML/55Cancri-e.html">Explore Exo</a></button>
-    <button class="redirect"> <a href="../ExoPlanets HTML/55Cancri-e.html">Explore Exo</a></button>
-    <button class="redirect-1"> <a href="../exoplanet_catalogue.html">Explore Catalogue</a></button>
-    <button class="redirect-1"> <a href="../exoplanet_catalogue.html">Explore Catalogue</a></button>
+    <button class="redirect">
+      <a href="../ExoPlanets HTML/55Cancri-e.html">Explore Exo</a>
+    </button>
+    <button class="redirect">
+      <a href="../ExoPlanets HTML/55Cancri-e.html">Explore Exo</a>
+    </button>
+    <button class="redirect-1">
+      <a href="../exoplanet_catalogue.html">Explore Catalogue</a>
+    </button>
+    <button class="redirect-1">
+      <a href="../exoplanet_catalogue.html">Explore Catalogue</a>
+    </button>
     <div class="hover-box" id="hoverBox">
       <h3>Planet Name: Earth</h3>
       <p>
@@ -35,7 +44,10 @@
       <div id="instructions">
         <h3>Current: Earth</h3>
         <h5>Instructions:</h5>
-        <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
+        <h5>
+          1) Hold and move around to explore the 360 view of the planet (For
+          desktops)
+        </h5>
         <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
       </div>
 
@@ -45,45 +57,48 @@
         <a href="mars.html">&#8250;</a>
       </div>
 
-      <div class="dropup-items" id="dropupItems" style="display: none;">
-        <h4>Planets List: </h4>
-        <a href="mercury.html" >Mercury</a>
-        <a href="venus.html">Venus</a><br>
+      <div class="dropup-items" id="dropupItems" style="display: none">
+        <h4>Planets List:</h4>
+        <a href="mercury.html">Mercury</a>
+        <a href="venus.html">Venus</a><br />
         <a href="earth.html">Earth</a>
         <a href="mars.html">Mars</a>
-        <a href="jupiter.html">Jupiter</a><br>
+        <a href="jupiter.html">Jupiter</a><br />
         <a href="saturn.html">Saturn</a>
-        <a href="Uranus.html">Uranus</a><br>
+        <a href="Uranus.html">Uranus</a><br />
         <a href="neptune.html">Neptune</a>
-        <a href="pluto.html">Pluto</a><br>
+        <a href="pluto.html">Pluto</a><br />
         <a href="sun.html">Sun</a>
         <a href="SolarSystem.html">Solar System</a>
-        <h2 id="backButton">&#8249;-------- </h2>
+        <h2 id="backButton">&#8249;--------</h2>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
+      document
+        .getElementById("jumpButton")
+        .addEventListener("click", function () {
+          // Hide instructions and navigation buttons
+          document.getElementById("instructions").style.display = "none";
+          document.getElementById("navButtons").style.display = "none";
 
-      document.getElementById('jumpButton').addEventListener('click', function () {
-        // Hide instructions and navigation buttons
-        document.getElementById('instructions').style.display = 'none';
-        document.getElementById('navButtons').style.display = 'none';
-
-        // Show the dropup-items with the planet list
-        document.getElementById('dropupItems').style.display = 'block';
-      });
+          // Show the dropup-items with the planet list
+          document.getElementById("dropupItems").style.display = "block";
+        });
 
       // Handle Back button click to return to instructions
-      document.getElementById('backButton').addEventListener('click', function () {
-        // Show instructions and navigation buttons again
-        document.getElementById('instructions').style.display = 'block';
-        document.getElementById('navButtons').style.display = 'flex';
+      document
+        .getElementById("backButton")
+        .addEventListener("click", function () {
+          // Show instructions and navigation buttons again
+          document.getElementById("instructions").style.display = "block";
+          document.getElementById("navButtons").style.display = "flex";
 
-        // Hide the dropup-items
-        document.getElementById('dropupItems').style.display = 'none';
-      });
+          // Hide the dropup-items
+          document.getElementById("dropupItems").style.display = "none";
+        });
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
