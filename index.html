@@ -1,61 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <title>NASA Space</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/png" href="Media/main.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Galactic TrailBlaze</title>
+  </head>
+  <body>
     <nav class="nav-bar">
-        <h3>NASA Space</h3>
-        <ul>
-            <li><a href="about.html">About</a></li>
-            <li><a href="NasaTerminal.html">Explore</a></li>
-        </ul>
-        <i class="fa-solid fa-bars" onclick="openNav()"></i>
-        <div id="myNav" class="overlay">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <div class="overlay-content">
+      <h3>NASA Space</h3>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="NasaTerminal.html">Explore</a></li>
+      </ul>
+      <i class="fa-solid fa-bars" onclick="openNav()"></i>
+      <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <div class="overlay-content">
           <a href="about.html">About</a>
           <a href="NasaTerminal.html">Explore</a>
-            </div>
         </div>
+      </div>
     </nav>
 
     <header class="side-spacing">
-        <h2 class="side-spacing introduction">Welcome to Space Jumpers, explore the exo-planets with visual information</h2>
+      <h2 class="side-spacing introduction">
+        Welcome to Space Jumpers, explore the exo-planets with visual
+        information
+      </h2>
     </header>
 
     <div class="sign-up-section">
-        <div class="form">
-            <form action="home.html">
-                <fieldset>
-                    <legend id="signInUp">Sign Up</legend>
-                    <div class="form-group removeName">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
-                    </div> 
-                    <br>
-                    <div class="form-group">
-                        <button><a href="home.html">Sign Up</a></button>
-                        <p id="signOption">Already have an account? <a href="signin.html" onclick="signIn()">Sign In</a></p>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-        <div class="earth">
-            <!-- The 3D model will be rendered here -->
-        </div>
+      <div class="form">
+        <form action="home.html">
+          <fieldset>
+            <legend id="signInUp">Sign Up</legend>
+            <div class="form-group removeName">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <br />
+            <div class="form-group">
+              <button><a href="home.html">Sign Up</a></button>
+              <p id="signOption">
+                Already have an account?
+                <a href="signin.html" onclick="signIn()">Sign In</a>
+              </p>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+      <div class="earth">
+        <!-- The 3D model will be rendered here -->
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -63,22 +75,35 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
       function openNav() {
-          document.getElementById("myNav").style.width = "100%";
+        document.getElementById("myNav").style.width = "100%";
       }
 
       function closeNav() {
-          document.getElementById("myNav").style.width = "0%";
+        document.getElementById("myNav").style.width = "0%";
       }
 
       // Scene setup
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);
-      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        5000
+      );
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+      });
       renderer.setClearColor(0x000000, 0); // Set clear color to transparent
-      renderer.setSize(window.innerWidth, window.innerHeight);
 
       // Append the renderer to the earth div instead of body
-      document.querySelector(".earth").appendChild(renderer.domElement);
+      const earthDiv = document.querySelector(".earth");
+      earthDiv.appendChild(renderer.domElement);
+
+      // Set renderer size based on the earth div dimensions
+      renderer.setSize(earthDiv.clientWidth, earthDiv.clientHeight);
+      camera.aspect = earthDiv.clientWidth / earthDiv.clientHeight;
+      camera.updateProjectionMatrix();
 
       // Orbit Controls with damping
       const controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -99,12 +124,16 @@
       directionalLight2.position.set(-5, 10, -7);
       scene.add(directionalLight2);
 
+      // Variable to store the loaded model
+      let loadedModel;
+
       // Load GLTF model
       const loader = new THREE.GLTFLoader();
       loader.load(
-        "3D%20Models/stylized_planet/scene.gltf", 
+        "3D%20Models/stylized_planet/scene.gltf",
         function (gltf) {
-          scene.add(gltf.scene);
+          loadedModel = gltf.scene;
+          scene.add(loadedModel);
         },
         undefined,
         function (error) {
@@ -113,12 +142,18 @@
       );
 
       // Camera positioning
-      camera.position.set(0, 0, 1);
+      camera.position.set(0, 0, 1.5);
       camera.lookAt(0, 0, 0);
 
       // Animation loop
       function animate() {
         requestAnimationFrame(animate);
+
+        // Rotate the loaded model if it exists
+        if (loadedModel) {
+          loadedModel.rotation.y += 0.005; // Adjust the rotation speed as needed
+        }
+
         controls.update();
         renderer.render(scene, camera);
       }
@@ -126,7 +161,6 @@
 
       // Handle window resize
       window.addEventListener("resize", () => {
-        const earthDiv = document.querySelector(".earth");
         const width = earthDiv.clientWidth;
         const height = earthDiv.clientHeight;
         renderer.setSize(width, height);
@@ -134,5 +168,5 @@
         camera.updateProjectionMatrix();
       });
     </script>
-</body>
+  </body>
 </html>

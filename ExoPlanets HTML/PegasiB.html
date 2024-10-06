@@ -4,11 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3D 51 Pegasi b</title>
-    <link rel="stylesheet" href="exo.css">
+    <link rel="stylesheet" href="exo.css" />
+    <link rel="icon" type="image/png" href="../Media/exo.png" />
   </head>
   <body>
-    <button class="redirect"> <a href="../SolarPlanets HTML/SolarSystem.html">Back to Solar</a></button>
-    <button class="redirect"> <a href="../SolarPlanets HTML/SolarSystem.html">Back to Solar</a></button>
+    <button class="redirect">
+      <a href="../SolarPlanets HTML/SolarSystem.html">Back to Solar</a>
+    </button>
+    <button class="redirect">
+      <a href="../SolarPlanets HTML/SolarSystem.html">Back to Solar</a>
+    </button>
     <div class="hover-box" id="hoverBox">
       <!-- Pegasi B (51 Pegasi b) -->
       <h3>Planet Name: 51 Pegasi b</h3>
@@ -21,10 +26,11 @@
         <br />
         Moons: 0
         <br />
-        51 Pegasi b is the first exoplanet discovered orbiting a Sun-like star. It's a gas giant and the prototype of the "hot Jupiter" class.
+        51 Pegasi b is the first exoplanet discovered orbiting a Sun-like star.
+        It's a gas giant and the prototype of the "hot Jupiter" class.
       </p>
     </div>
-    
+
     <div class="info-point"></div>
     <div class="loading-container" id="loadingContainer">
       <div class="loading-bar" id="loadingBar"></div>
@@ -34,7 +40,10 @@
       <div id="instructions">
         <h3>Current: Pegasi B</h3>
         <h5>Instructions:</h5>
-        <h5>1) Hold and move around to explore the 360 view of the planet (For desktops)</h5>
+        <h5>
+          1) Hold and move around to explore the 360 view of the planet (For
+          desktops)
+        </h5>
         <h5>2) Tap on the model to get info about the planet (For mobiles)</h5>
       </div>
 
@@ -43,9 +52,9 @@
         <button id="jumpButton">JUMP</button>
         <a href="TOI-1452b.html">&#8250;</a>
       </div>
-      
-      <div class="dropup-items" id="dropupItems" style="display: none;">
-        <h4>Planets List: </h4>
+
+      <div class="dropup-items" id="dropupItems" style="display: none">
+        <h4>Planets List:</h4>
         <a href="55Cancri-e.html">55_cancri_e637</a>
         <a href="GJ1214b.html">GJ1214b</a>
         <a href="Gliese1132b.html">Gliese1132b</a>
@@ -56,32 +65,35 @@
         <a href="PegasiB.html">51_pegasi_b</a>
         <a href="TOI-1452b.html">TOI-1452</a>
         <a href="WASP-76b.html">WASP-76b</a>
-        <h2 id="backButton">&#8249;-------- </h2>
+        <h2 id="backButton">&#8249;--------</h2>
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script>
+      document
+        .getElementById("jumpButton")
+        .addEventListener("click", function () {
+          // Hide instructions and navigation buttons
+          document.getElementById("instructions").style.display = "none";
+          document.getElementById("navButtons").style.display = "none";
 
-      document.getElementById('jumpButton').addEventListener('click', function () {
-        // Hide instructions and navigation buttons
-        document.getElementById('instructions').style.display = 'none';
-        document.getElementById('navButtons').style.display = 'none';
-
-        // Show the dropup-items with the planet list
-        document.getElementById('dropupItems').style.display = 'block';
-      });
+          // Show the dropup-items with the planet list
+          document.getElementById("dropupItems").style.display = "block";
+        });
 
       // Handle Back button click to return to instructions
-      document.getElementById('backButton').addEventListener('click', function () {
-        // Show instructions and navigation buttons again
-        document.getElementById('instructions').style.display = 'block';
-        document.getElementById('navButtons').style.display = 'flex';
+      document
+        .getElementById("backButton")
+        .addEventListener("click", function () {
+          // Show instructions and navigation buttons again
+          document.getElementById("instructions").style.display = "block";
+          document.getElementById("navButtons").style.display = "flex";
 
-        // Hide the dropup-items
-        document.getElementById('dropupItems').style.display = 'none';
-      });
+          // Hide the dropup-items
+          document.getElementById("dropupItems").style.display = "none";
+        });
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
@@ -259,44 +271,44 @@
         camera.updateProjectionMatrix();
       });
 
-            // Handle hover events
-            const hoverBox = document.getElementById("hoverBox");
-            const infoPoint = document.querySelector(".info-point");
-      
-            infoPoint.addEventListener("mouseenter", function () {
-              hoverBox.classList.add("active"); // Show the hover box
-            });
-      
-            infoPoint.addEventListener("mouseleave", function () {
-              hoverBox.classList.remove("active"); // Hide the hover box
-            });
-      
-            // Update the hover box position
-            function updateHoverBoxPosition(event) {
-              const mouseX = event.clientX;
-              const mouseY = event.clientY;
-              hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
-              hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
-            }
-      
-            // Show the hover box when clicking on the info point
-            infoPoint.addEventListener("click", function () {
-              hoverBox.classList.toggle("active"); // Toggle the hover box
-            });
-      
-            // Handle click events
-            document.addEventListener("click", function (event) {
-              // Check if the click was outside the hover box and info point
-              const isClickInsideInfoPoint = infoPoint.contains(event.target);
-              const isClickInsideHoverBox = hoverBox.contains(event.target);
-      
-              if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
-                hoverBox.classList.remove("active"); // Hide the hover box
-              }
-            });
-      
-            // Add mouse move event listener to update hover box position
-            window.addEventListener("mousemove", updateHoverBoxPosition);
+      // Handle hover events
+      const hoverBox = document.getElementById("hoverBox");
+      const infoPoint = document.querySelector(".info-point");
+
+      infoPoint.addEventListener("mouseenter", function () {
+        hoverBox.classList.add("active"); // Show the hover box
+      });
+
+      infoPoint.addEventListener("mouseleave", function () {
+        hoverBox.classList.remove("active"); // Hide the hover box
+      });
+
+      // Update the hover box position
+      function updateHoverBoxPosition(event) {
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
+        hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
+      }
+
+      // Show the hover box when clicking on the info point
+      infoPoint.addEventListener("click", function () {
+        hoverBox.classList.toggle("active"); // Toggle the hover box
+      });
+
+      // Handle click events
+      document.addEventListener("click", function (event) {
+        // Check if the click was outside the hover box and info point
+        const isClickInsideInfoPoint = infoPoint.contains(event.target);
+        const isClickInsideHoverBox = hoverBox.contains(event.target);
+
+        if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
+          hoverBox.classList.remove("active"); // Hide the hover box
+        }
+      });
+
+      // Add mouse move event listener to update hover box position
+      window.addEventListener("mousemove", updateHoverBoxPosition);
     </script>
   </body>
 </html>

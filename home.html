@@ -3,10 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Galactic TrailBlaze</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="Media/main.png" />
+
+    <link rel="stylesheet" href="styles.css" />
     <style>
       body {
         margin: 0;
@@ -20,19 +25,19 @@
 
       /* Styling for the typewriter text */
       .typewriter-text {
+        max-width: 350px;
         position: absolute;
         top: 20%;
         left: 50%;
         transform: translateX(-50%);
         color: #ffffff;
-        font-size: 3rem;
+        font-size: 2rem;
         letter-spacing: 0.1rem;
         white-space: nowrap;
         overflow: hidden;
         border-right: 3px solid rgba(255, 255, 255, 0.75);
         width: 0;
         opacity: 0;
-       
       }
 
       @keyframes typing {
@@ -94,46 +99,46 @@
       }
 
       .overlay {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-}
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.9);
+        overflow-x: hidden;
+        transition: 0.5s;
+      }
 
-.overlay-content {
-  position: relative;
-  top: 25%;
-  width: 100%;
-  text-align: center;
-  margin-top: 30px;
-}
+      .overlay-content {
+        position: relative;
+        top: 25%;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+      }
 
-.overlay a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 36px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
+      .overlay a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
 
-.overlay a:hover,
-.overlay a:focus {
-  color: #f1f1f1;
-}
+      .overlay a:hover,
+      .overlay a:focus {
+        color: #f1f1f1;
+      }
 
-.overlay .closebtn {
-  position: absolute;
-  top: 20px;
-  right: 45px;
-  font-size: 60px;
-}
+      .overlay .closebtn {
+        position: absolute;
+        top: 20px;
+        right: 45px;
+        font-size: 60px;
+      }
     </style>
   </head>
   <body>
@@ -153,9 +158,11 @@
           <a href="NasaTerminal.html">Explore</a>
         </div>
       </div>
-  </nav>
+    </nav>
 
-    <div class="typewriter-text typewriter-active">Ready to Jump?<br> <br>
+    <div class="typewriter-text typewriter-active">
+      Ready to Jump?<br />
+      <br />
       <button><a href="SolarPlanets HTML/earth.html">Jump</a></button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -345,12 +352,14 @@
       });
 
       function openNav() {
-          document.getElementById("myNav").style.width = "100%";
+        document.getElementById("myNav").style.width = "100%";
       }
 
       function closeNav() {
-          document.getElementById("myNav").style.width = "0%";
+        document.getElementById("myNav").style.width = "0%";
       }
     </script>
   </body>
 </html>
+
+<!-- Done by Arji Jethin & Aluru Bala Karthikeya -->
