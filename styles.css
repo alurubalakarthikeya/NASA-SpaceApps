@@ -353,3 +353,7 @@ canvas {
   opacity: 1;
   transform: translateY(0);
 }
+
+ul li a {
+  color: white;
+}

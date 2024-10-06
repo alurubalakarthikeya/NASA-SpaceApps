@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>NASA Space</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <h3>NASA Space</h3>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="NasaTerminal.html">Explore</a></li>
+        </ul>
+        <i class="fa-solid fa-bars" onclick="openNav()"></i>
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+          <a href="home.html">Home</a>
+          <a href="NasaTerminal.html">Explore</a>
+            </div>
+        </div>
+    </nav>
+    <header class="side-spacing">
+        <h2 class="side-spacing introduction">About Us</h2>
+        <p style="text-align: justify;">The 3D Interactive Solar System and Exoplanets Viewer is designed to be an easy-to-use website that allows users to navigate through the solar system and various exoplanets in an interactive three-dimensional format. This project aims to incorporate the latest web technologies to create a rich experience, visually exploring planetary features, orbits, and other unique properties of both solar and exoplanetary systems. Key features include interactive 3D models with high-detail rendering of planetary surfaces, atmospheres, and ring systems, alongside user-friendly navigation tools that promote exploration. The site boasts a clean and modern design that enhances user experience through accessible menus and information panels. Educational content will provide detailed information about each planet and exoplanet, including size, composition, distance from the sun, and interesting facts, augmented with multimedia elements like videos and animations for contextual learning. Users can zoom and rotate the 3D models to view planets from multiple angles and experience real-time rendering of datasets, such as planetary movements and orbits.</p>
+        <h2 class="side-spacing introduction">Our Team</h2>
+        <p>Click on the names to check our github profiles</p>
+        <ul>
+            <li style="font-size: 2vh;"><a href="https://github.com/alurubalakarthikeya" target="_blank">Aluru Bala Karthikeya <i class="fa-solid fa-up-right-from-square"></i></a></li>
+            <li style="font-size: 2vh;"><a href="https://github.com/ArjiJethin" target="_blank">Arji Jethin Naga Sai Eswar(Team Lead)<i class="fa-solid fa-up-right-from-square"></i></a></li>
+            <li style="font-size: 2vh;">Vinod Sambrani</li>
+            <li style="font-size: 2vh;">Akshat Choudhary</li>
+        </ul>
+    </header>
+
+    </div>
+    <script>
+      function openNav() {
+          document.getElementById("myNav").style.width = "100%";
+      }
+
+      function closeNav() {
+          document.getElementById("myNav").style.width = "0%";
+      }
+    </script>
+</body>
+</html>
