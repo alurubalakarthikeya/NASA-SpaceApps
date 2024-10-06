@@ -112,11 +112,56 @@
         </div>
       </div>
     </nav>
+    <div class="hover-box" id="hoverBox">
+      <h3>About Us</h3>
+      <p>
+        We are students of second year in Dayananda Sagar University. And this project is based on exoplanets and their 3d view,  with addition to the solar planets.
+      </p>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script>
+
+        // Handle hover events
+        const hoverBox = document.getElementById("hoverBox");
+        const infoPoint = document.querySelector(".info-point");
+  
+        infoPoint.addEventListener("mouseenter", function () {
+          hoverBox.classList.add("active"); // Show the hover box
+        });
+  
+        infoPoint.addEventListener("mouseleave", function () {
+          hoverBox.classList.remove("active"); // Hide the hover box
+        });
+  
+        // Update the hover box position
+        function updateHoverBoxPosition(event) {
+          const mouseX = event.clientX;
+          const mouseY = event.clientY;
+          hoverBox.style.left = `${mouseX + 20}px`; // Position with some offset
+          hoverBox.style.top = `${mouseY - 20}px`; // Position with some offset
+        }
+  
+        // Show the hover box when clicking on the info point
+        infoPoint.addEventListener("click", function () {
+          hoverBox.classList.toggle("active"); // Toggle the hover box
+        });
+  
+        // Handle click events
+        document.addEventListener("click", function (event) {
+          // Check if the click was outside the hover box and info point
+          const isClickInsideInfoPoint = infoPoint.contains(event.target);
+          const isClickInsideHoverBox = hoverBox.contains(event.target);
+  
+          if (!isClickInsideInfoPoint && !isClickInsideHoverBox) {
+            hoverBox.classList.remove("active"); // Hide the hover box
+          }
+        });
+  
+        // Add mouse move event listener to update hover box position
+        window.addEventListener("mousemove", updateHoverBoxPosition);
       // Scene setup
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
