@@ -10,30 +10,42 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 78, 146, 0.7)),
+    url("Media/4442547.gif") no-repeat center center;
+  background-size: cover;
   overflow: hidden;
-  background: linear-gradient(135deg, #000428, #004e92);
 }
 
 .container {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .card-section {
   display: flex;
-  flex-direction: row; /* Row to place summary and cards side by side */
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  padding: 20px;
+}
+
+.summary,
+.cards-container {
+  width: 400px;
+  height: 500px;
 }
 
 .summary {
-  width: 400px; /* Fixed width for larger screens */
-  height: 500px; /* Fixed height */
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(
+    10,
+    10,
+    10,
+    0.6
+  ); /* Slightly transparent background for frosted glass effect */
   color: white;
   padding: 20px;
   border-radius: 10px;
@@ -41,20 +53,18 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 10px; /* Reduced margin for closer proximity */
-  backdrop-filter: blur(15px);
-  transition: transform 0.4s ease; /* Added transition for morph effect */
+  margin-right: 10px;
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  transition: transform 0.4s ease;
+  overflow: hidden; /* Prevent text from escaping */
 }
 
 .cards-container {
-  width: 400px; /* Fixed width for larger screens */
-  height: 500px; /* Fixed height */
   position: relative;
   perspective: 1500px;
 }
 
 .card {
-  margin-left: 250px;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -91,11 +101,6 @@ body {
   transform: translateX(100%) rotateY(-10deg);
 }
 
-/* Hover effect for 3D tilt */
-.card:hover {
-  transform: scale(1.05);
-}
-
 .card img {
   max-width: 80%;
   max-height: 70%;
@@ -110,48 +115,80 @@ body {
   margin-top: auto;
 }
 
-.button-container button {
+.button-container button,
+.jump-button,
+.list-all-button,
+.close-modal {
   padding: 10px 20px;
-  background-color: #ffffff;
-  color: #1e90ff;
-  border: none;
-  cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.2s;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover animation */
+}
+
+.button-container button {
+  background-color: #1e90ff; /* Keep original color */
+  color: white; /* Keep text color consistent */
 }
 
 .button-container button:hover {
-  background-color: #e0e0e0;
+  background-color: #007bff; /* Hover effect */
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
 .jump-button {
-  padding: 10px 20px;
-  background-color: #17a2b8;
+  background-color: #17a2b8; /* Keep original color */
   color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 10px; /* Space above the button */
-  transition: background-color 0.2s;
+  margin-top: 10px;
 }
 
 .jump-button:hover {
-  background-color: #138496;
+  background-color: #138496; /* Hover effect */
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
 .list-all-button {
-  margin-top: 600px;
-  padding: 10px 20px;
-  background-color: #28a745;
+  margin-top: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 150, 0.8),
+    rgba(0, 0, 255, 0.8)
+  ); /* Space theme gradient */
   color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  align-self: center; /* Center the button */
 }
 
 .list-all-button:hover {
-  background-color: #1e7e34;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 50, 0.8),
+    rgba(0, 0, 200, 0.8),
+    rgba(0, 0, 255, 0.8)
+  ); /* Darker gradient on hover */
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+.prev-next-button {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 255, 0.8),
+    rgba(0, 0, 255, 0.8)
+  ); /* Space theme gradient */
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover animation */
+}
+
+.prev-next-button:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(200, 0, 200, 0.8),
+    rgba(0, 0, 150, 0.8)
+  ); /* Darker gradient on hover */
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
 .card-list-modal {
@@ -161,109 +198,91 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
+  z-index: 100;
 }
 
 .card-list-content {
-  background: linear-gradient(135deg, #000428, #004e92);
-  padding: 20px;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Slightly transparent background for frosted glass effect */
+  padding: 30px;
   border-radius: 10px;
-  width: 42%; /* 30% smaller than original 60% */
+  width: 80%;
+  max-width: 500px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(15px);
-}
-
-.card-list-content h3 {
-  margin-bottom: 15px;
-  color: white;
+  backdrop-filter: blur(10px); /* Frosted glass effect */
 }
 
 .card-list-content ul {
   list-style-type: none;
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center items */
 }
 
-.card-list-content li {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  margin: 10px;
-  padding: 10px 20px; /* Added horizontal padding */
-  border-radius: 5px;
+.card-list-content ul li {
   cursor: pointer;
-  transition: background-color 0.3s;
-  flex: 0 0 calc(50% - 20px); /* Two items in a row */
-  text-align: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #17a2b8; /* Keep original color */
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover animation */
 }
 
-.card-list-content li:hover {
-  background: rgba(255, 255, 255, 0.4);
+.card-list-content ul li:hover {
+  background-color: #138496; /* Hover effect */
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
 .close-modal {
   margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #dc3545;
+  background-color: #dc3545; /* Keep original color */
   color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
 }
 
 .close-modal:hover {
-  background-color: #c82333;
+  background-color: #c82333; /* Hover effect */
+  transform: scale(1.05); /* Scale effect on hover */
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .summary {
-    width: 90%; /* Adjust width for smaller screens */
-    margin-right: 0; /* Remove margin on smaller screens */
-  }
-
-  .cards-container {
-    width: 90%; /* Adjust width for smaller screens */
-    height: auto; /* Allow height to adjust */
-  }
-
-  .card {
-    margin-left: 0; /* Remove left margin for smaller screens */
-    width: 100%; /* Full width for cards */
-  }
-
-  .button-container {
-    flex-direction: column; /* Stack buttons vertically */
-  }
-
-  .button-container button {
-    width: 100%; /* Full width for buttons */
-    margin-bottom: 10px; /* Space between buttons */
-  }
-
-  .list-all-button {
-    margin-top: 20px; /* Adjust margin for mobile */
-  }
-
-  .card-list-content {
-    width: 80%; /* Adjust modal width for smaller screens */
-  }
+/* New styles for buttons in the popup */
+.popup-button-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping of buttons */
+  justify-content: space-between; /* Space between buttons */
 }
 
-@media (max-width: 480px) {
-  .summary {
-    font-size: 14px; /* Smaller font size */
-  }
+.popup-button {
+  flex: 48%; /* Makes two buttons per row with space */
+  margin: 5px; /* Spacing around buttons */
+  padding: 10px 0; /* Padding for buttons */
+  border-radius: 5px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 150, 0.8)
+  ); /* Space theme gradient */
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover animation */
+}
 
-  .card-list-content h3 {
-    font-size: 18px; /* Adjust heading size */
-  }
+.popup-button:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 50, 0.8),
+    rgba(0, 0, 200, 0.8)
+  ); /* Darker gradient on hover */
+  transform: scale(1.05); /* Scale effect on hover */
+}
 
-  .card-list-content li {
-    flex: 0 0 calc(100% - 20px); /* One item in a row for small screens */
-  }
+/* Modal transitions */
+.show-modal {
+  display: flex;
 }
