@@ -146,3 +146,22 @@ button:hover .dropup-items {
   justify-content: center;
   gap: 35px;
 }
+
+.redirect {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+font-family: var(--font-one);
+cursor: pointer;
+transition: 0.4s;
+background-color: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(5px);
+color: white;
+border: 1px solid #ccc; /* Light gray border */
+border-radius: 5px; /* Slightly rounded corners */
+padding: 10px 30px; /* Padding around the text */
+}
+
+.redirect > a {
+  color: white;
+}
