@@ -103,3 +103,5 @@ closeModalBtn.addEventListener("click", () => {
 });
 
 updateCardDisplay(currentIndex);
+
+/* Developed by Arji Jethin & Aluru Bala Karthikeya */
