@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 :root {
   --primary-color: #000000;
@@ -184,20 +184,19 @@ button:hover .dropup-items {
   gap: 35px;
 }
 
-
 .redirect {
   position: absolute;
   top: 5%;
   right: 5%;
-font-family: var(--font-one);
-cursor: pointer;
-transition: 0.4s;
-background-color: rgba(255, 255, 255, 0.15);
-backdrop-filter: blur(5px);
-color: white;
-border: 1px solid #ccc; /* Light gray border */
-border-radius: 5px; /* Slightly rounded corners */
-padding: 10px 30px; /* Padding around the text */
+  font-family: var(--font-one);
+  cursor: pointer;
+  transition: 0.4s;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  color: white;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 10px 30px; /* Padding around the text */
 }
 
 .redirect > a {
@@ -208,17 +207,19 @@ padding: 10px 30px; /* Padding around the text */
   position: absolute;
   top: 5%;
   left: 5%;
-font-family: var(--font-one);
-cursor: pointer;
-transition: 0.4s;
-background-color: rgba(255, 255, 255, 0.15);
-backdrop-filter: blur(5px);
-color: white;
-border: 1px solid #ccc; /* Light gray border */
-border-radius: 5px; /* Slightly rounded corners */
-padding: 10px 30px; /* Padding around the text */
+  font-family: var(--font-one);
+  cursor: pointer;
+  transition: 0.4s;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  color: white;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Slightly rounded corners */
+  padding: 10px 30px; /* Padding around the text */
 }
 
 .redirect-1 > a {
   color: white;
 }
+
+/* Developed by Arji Jethin & Aluru Bala Karthikeya */
