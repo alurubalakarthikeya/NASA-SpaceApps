@@ -1,10 +1,10 @@
 <h1 align="center">Galactic TrailBlaze</h1>
 
-    <p align="center">
+<p align="center">
         <img src="path_to_logo_image.png" alt="Galactic TrailBlaze Logo" width="200" height="200" />
     </p>
 
-    <h2>Description</h2>
+<h2>Description</h2>
     <p>
         Welcome to <strong>Galactic TrailBlaze</strong>, an immersive 3D web-based application that brings the
         solar system and exoplanetary discoveries to your screen. This interactive tool allows users to explore
@@ -12,7 +12,7 @@
         Gain detailed insights into each planet's characteristics and simulate their positions in space over time.
     </p>
 
-    <h2>Features</h2>
+<h2>Features</h2>
     <ul>
         <li><strong>Interactive 3D View:</strong> Real-time 3D visualization of the solar system and known exoplanets.</li>
         <li><strong>Detailed Exploration:</strong> Select and view information on each planet and exoplanet, including orbits and key stats.</li>
@@ -21,9 +21,9 @@
         <li><strong>Exoplanet Exploration:</strong> Dive into exoplanetary systems with confirmed discoveries beyond our solar system.</li>
     </ul>
 
-    <h2>Getting Started</h2>
+<h2>Getting Started</h2>
 
-    <h3>Prerequisites</h3>
+<h3>Prerequisites</h3>
     <p>
         To run Galactic TrailBlaze, you will only need:
         <ul>
@@ -32,7 +32,7 @@
         </ul>
     </p>
 
-    <h3>Installation</h3>
+<h3>Installation</h3>
     <ol>
         <li>Clone the repository to your local machine:</li>
         <pre><code>git clone https://github.com/ArjiJethin/NASA-SpaceApps.git</code></pre>
@@ -43,13 +43,13 @@
         <pre><code>npm install</code></pre>
     </ol>
 
-    <h2>Usage</h2>
+<h2>Usage</h2>
     <ol>
         <li>Simply open <code>index.html</code> in your browser to launch the 3D viewer.</li>
         <li>Use the intuitive controls to explore various planets and exoplanetary systems.</li>
     </ol>
 
-    <h2>Contributing</h2>
+<h2>Contributing</h2>
     <p>We welcome contributions from the community! To get started:</p>
     <ol>
         <li>Fork the repository.</li>
@@ -62,20 +62,20 @@
         <li>Create a pull request for review.</li>
     </ol>
 
-    <h2>License</h2>
+<h2>License</h2>
     <p>
         This project is licensed under the <strong>MIT License</strong>. For more information, please refer to the
         <a href="LICENSE">LICENSE</a> file.
     </p>
 
-    <h2>Check Out the Live Site</h2>
+<h2>Check Out the Live Site</h2>
     <p>You can explore the Galactic TrailBlaze live by visiting the following pages:</p>
     <ul>
         <li><strong>Karthikeya's Page:</strong> <a href="https://alurubalakarthikeya.github.io/NASA-SpaceApps/">Click here</a></li>
         <li><strong>Jethin's Page:</strong> <a href="https://galactictrailblaze-arjijethin.netlify.app">Click here</a></li>
     </ul>
 
-    <h2>Details:-</h2>
+<h2>Details:-</h2>
     <h3>⦾ SigUp & SingIn Pages:-</h3>
     <div align="center">
     <img src="Media/Description/SignUp.png" alt="SignUp Page" height="300px" />
