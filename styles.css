@@ -181,6 +181,7 @@ button {
   font-family: var(--font-one);
   cursor: pointer;
   transition: 0.4s;
+  color: white;
 }
 
 button > a {
@@ -192,6 +193,7 @@ button:hover {
   background-color: var(--secondary-color);
   border-left: 2px solid var(--quaternary-color);
   border-right: 2px solid var(--quaternary-color);
+  color: white;
 }
 
 p {
@@ -300,20 +302,20 @@ canvas {
   margin: 20px;
 }
 
-/* Add this to your styles.css */
+
 .earth {
   width: 100%;
-  height: 500px; /* Adjust the height as needed */
+  height: 500px; 
   position: relative;
 }
 
 .form,
 .earth {
-  flex: 1 1 45%; /* 45% of the width, adjusts for space between them */
+  flex: 1 1 45%; 
 }
 
 .earth {
-  width: 400px; /* Set a fixed height for Earth section */
+  width: 400px; 
   max-width: 100%;
   display: block;
 }
@@ -326,17 +328,17 @@ canvas {
   }
 
   .earth {
-    height: 400px; /* Adjust height for mobile view */
+    height: 400px; 
   }
 }
 
 @media (max-width: 480px) {
   .earth {
-    height: 300px; /* Further adjust for smaller screens */
+    height: 300px; /
   }
 }
 
-/* Styles for the hover box */
+
 .hover-box {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.15);

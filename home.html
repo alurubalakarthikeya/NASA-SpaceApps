@@ -1,365 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Galactic TrailBlaze</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Galactic TrailBlaze</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        />
 
-    <link rel="icon" type="image/png" href="Media/main.png" />
+        <link rel="icon" type="image/png" href="Media/main.png" />
 
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-        background-color: black;
-      }
+        <link rel="stylesheet" href="styles.css" />
+        <style>
+            body {
+                margin: 0;
+                overflow: hidden;
+                background-color: black;
+            }
 
-      canvas {
-        display: block;
-      }
+            canvas {
+                display: block;
+            }
 
-      /* Styling for the typewriter text */
-      .typewriter-text {
-        max-width: 350px;
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #ffffff;
-        font-size: 2rem;
-        letter-spacing: 0.1rem;
-        white-space: nowrap;
-        overflow: hidden;
-        border-right: 3px solid rgba(255, 255, 255, 0.75);
-        width: 0;
-        opacity: 0;
-      }
+            /* Styling for the typewriter text */
+            .typewriter-text {
+                max-width: 350px;
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                color: #ffffff;
+                font-size: 2rem;
+                letter-spacing: 0.1rem;
+                white-space: nowrap;
+                overflow: hidden;
+                border-right: 3px solid rgba(255, 255, 255, 0.75);
+                width: 0;
+                opacity: 0;
+            }
 
-      @keyframes typing {
-        from {
-          width: 0;
-        }
-        to {
-          width: 15ch; /* Length of "Ready to Jump" */
-        }
-      }
+            @keyframes typing {
+                from {
+                    width: 0;
+                }
+                to {
+                    width: 15ch; /* Length of "Ready to Jump" */
+                }
+            }
 
-      @keyframes blink {
-        0% {
-          border-color: rgba(255, 255, 255, 0.75);
-        }
-        50% {
-          border-color: transparent;
-        }
-        100% {
-          border-color: rgba(255, 255, 255, 0.75);
-        }
-      }
+            @keyframes blink {
+                0% {
+                    border-color: rgba(255, 255, 255, 0.75);
+                }
+                50% {
+                    border-color: transparent;
+                }
+                100% {
+                    border-color: rgba(255, 255, 255, 0.75);
+                }
+            }
 
-      .typewriter-active {
-        top: 45%;
-        text-align: center;
-        opacity: 1;
-        animation: typing 3s steps(14) forwards, blink 0.75s step-end infinite;
-      }
+            .typewriter-active {
+                top: 45%;
+                text-align: center;
+                opacity: 1;
+                animation: typing 3s steps(14) forwards,
+                    blink 0.75s step-end infinite;
+            }
 
-      /* Styling for the image */
-      .image-link {
-        position: absolute;
-        top: 35%; /* Adjust as needed for spacing */
-        left: 50%;
-        transform: translateX(-50%);
-        width: 150px; /* Adjust to your desired size */
-        height: auto; /* Maintain aspect ratio */
-        opacity: 0; /* Start hidden */
-        transition: opacity 1s; /* Fade in effect */
-      }
+            /* Styling for the image */
+            .image-link {
+                position: absolute;
+                top: 35%; /* Adjust as needed for spacing */
+                left: 50%;
+                transform: translateX(-50%);
+                width: 150px; /* Adjust to your desired size */
+                height: auto; /* Maintain aspect ratio */
+                opacity: 0; /* Start hidden */
+                transition: opacity 1s; /* Fade in effect */
+            }
 
-      .image-link.visible {
-        opacity: 1; /* Show the image when the class is added */
-      }
+            .image-link.visible {
+                opacity: 1; /* Show the image when the class is added */
+            }
 
-      .button {
-        background-color: #ffffff;
-        color: #000000;
-        padding: 10px 40%;
-        border: 2px solid black;
-        border-radius: 5px;
-      }
+            .button {
+                background-color: #ffffff;
+                color: #000000;
+                padding: 10px 40%;
+                border: 2px solid black;
+                border-radius: 5px;
+            }
 
-      .button:hover {
-        background-color: #000000;
-        color: #ffffff;
-        border: 2px solid white;
-      }
+            .button:hover {
+                background-color: #000000;
+                color: #ffffff;
+                border: 2px solid white;
+            }
 
-      .overlay {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.9);
-        overflow-x: hidden;
-        transition: 0.5s;
-      }
+            .overlay {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: rgb(0, 0, 0);
+                background-color: rgba(0, 0, 0, 0.9);
+                overflow-x: hidden;
+                transition: 0.5s;
+            }
 
-      .overlay-content {
-        position: relative;
-        top: 25%;
-        width: 100%;
-        text-align: center;
-        margin-top: 30px;
-      }
+            .overlay-content {
+                position: relative;
+                top: 25%;
+                width: 100%;
+                text-align: center;
+                margin-top: 30px;
+            }
 
-      .overlay a {
-        padding: 8px;
-        text-decoration: none;
-        font-size: 36px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-      }
+            .overlay a {
+                padding: 8px;
+                text-decoration: none;
+                font-size: 36px;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
+            }
 
-      .overlay a:hover,
-      .overlay a:focus {
-        color: #f1f1f1;
-      }
+            .overlay a:hover,
+            .overlay a:focus {
+                color: #f1f1f1;
+            }
 
-      .overlay .closebtn {
-        position: absolute;
-        top: 20px;
-        right: 45px;
-        font-size: 60px;
-      }
-    </style>
-  </head>
-  <body>
-    <nav class="nav-bar">
-      <h3>NASA Space</h3>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="NasaTerminal.html">Explore</a></li>
-      </ul>
-      <i class="fa-solid fa-bars" onclick="openNav()"></i>
-      <div id="myNav" class="overlay">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-          >&times;</a
-        >
-        <div class="overlay-content">
-          <a href="about.html">About</a>
-          <a href="NasaTerminal.html">Explore</a>
+            .overlay .closebtn {
+                position: absolute;
+                top: 20px;
+                right: 45px;
+                font-size: 60px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="nav-bar">
+            <h3>NASA Space</h3>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="NasaTerminal.html">Explore</a></li>
+            </ul>
+            <i class="fa-solid fa-bars" onclick="openNav()"></i>
+            <div id="myNav" class="overlay">
+                <a
+                    href="javascript:void(0)"
+                    class="closebtn"
+                    onclick="closeNav()"
+                    >&times;</a
+                >
+                <div class="overlay-content">
+                    <a href="about.html">About</a>
+                    <a href="NasaTerminal.html">Explore</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="typewriter-text typewriter-active">
+            Ready to Jump?<br />
+            <br />
+            <a
+                style="color: rgb(255, 81, 0); font-size: 20px"
+                href="SolarPlanets HTML/earth.html"
+                ><button>Jump</button></a
+            >
         </div>
-      </div>
-    </nav>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script>
+            // Scene setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(
+                75,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                2000
+            );
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.body.appendChild(renderer.domElement);
 
-    <div class="typewriter-text typewriter-active">
-      Ready to Jump?<br />
-      <br />
-      <button><a href="SolarPlanets HTML/earth.html">Jump</a></button>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script>
-      // Scene setup
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        2000
-      );
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(window.devicePixelRatio);
-      document.body.appendChild(renderer.domElement);
+            // Load space texture for background
+            const loader = new THREE.TextureLoader();
+            loader.load("path/to/space_texture.jpg", function (texture) {
+                scene.background = texture;
+            });
 
-      // Load space texture for background
-      const loader = new THREE.TextureLoader();
-      loader.load("path/to/space_texture.jpg", function (texture) {
-        scene.background = texture;
-      });
+            // Orbit Controls
+            const controls = new THREE.OrbitControls(
+                camera,
+                renderer.domElement
+            );
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.screenSpacePanning = false;
+            controls.maxPolarAngle = Math.PI;
 
-      // Orbit Controls
-      const controls = new THREE.OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.05;
-      controls.screenSpacePanning = false;
-      controls.maxPolarAngle = Math.PI;
+            // Ambient Light
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            scene.add(ambientLight);
 
-      // Ambient Light
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
-      scene.add(ambientLight);
+            // Directional Light
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+            directionalLight.position.set(5, 10, 7);
+            directionalLight.castShadow = true;
+            scene.add(directionalLight);
 
-      // Directional Light
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
-      directionalLight.position.set(5, 10, 7);
-      directionalLight.castShadow = true;
-      scene.add(directionalLight);
+            const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
+            directionalLight2.position.set(-5, 10, -7);
+            scene.add(directionalLight2);
 
-      const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.5);
-      directionalLight2.position.set(-5, 10, -7);
-      scene.add(directionalLight2);
+            // Add stars using Points
+            const starGeometry = new THREE.BufferGeometry();
+            const starMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 1.5,
+            });
 
-      // Add stars using Points
-      const starGeometry = new THREE.BufferGeometry();
-      const starMaterial = new THREE.PointsMaterial({
-        color: 0xffffff,
-        size: 1.5,
-      });
-
-      const starVertices = [];
-      for (let i = 0; i < 5000; i++) {
-        const x = (Math.random() - 0.5) * 2000;
-        const y = (Math.random() - 0.5) * 2000;
-        const z = (Math.random() - 0.5) * 2000;
-        starVertices.push(x, y, z);
-      }
-
-      starGeometry.setAttribute(
-        "position",
-        new THREE.Float32BufferAttribute(starVertices, 3)
-      );
-      const stars = new THREE.Points(starGeometry, starMaterial);
-      scene.add(stars);
-
-      // Add planets
-      const planetColors = [
-        0x87cefa, 0xffb6c1, 0xadd8e6, 0xffc0cb, 0xb0e0e6, 0xd8bfd8, 0xe6e6fa,
-        0xf0e68c, 0xffdab9, 0xffefd5, 0xdda0dd, 0x98fb98, 0xafeeee, 0xdb7093,
-        0xffe4e1, 0xffe4b5, 0xffdead, 0xf5deb3, 0xfffacd, 0xe0ffff,
-      ];
-      const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
-
-      for (let i = 0; i < 20; i++) {
-        const color = planetColors[i % planetColors.length];
-        const sphereMaterial = new THREE.MeshPhongMaterial({
-          color: color,
-          shininess: 100,
-        });
-        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        sphere.position.set(
-          (Math.random() - 0.5) * 5000,
-          (Math.random() - 0.5) * 5000,
-          (Math.random() - 0.5) * 5000
-        );
-        scene.add(sphere);
-      }
-
-      // Add suns
-      const sunColors = [0xffd700, 0xffa500, 0xff4500];
-      const sunGeometry = new THREE.SphereGeometry(10, 32, 32);
-
-      for (let i = 0; i < sunColors.length; i++) {
-        const sunMaterial = new THREE.MeshPhongMaterial({
-          color: sunColors[i],
-          emissive: sunColors[i],
-          emissiveIntensity: 1,
-          shininess: 100,
-        });
-        const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-        sun.position.set(
-          (Math.random() - 0.5) * 6000,
-          (Math.random() - 0.5) * 6000,
-          (Math.random() - 0.5) * 6000
-        );
-        scene.add(sun);
-      }
-
-      // Load GLTF model (replace with your path)
-      const gltfLoader = new THREE.GLTFLoader();
-      gltfLoader.load(
-        "3D Models/City/bc5bb02ff6c44a2aa3c1abe0c717fec0_Textured.gltf",
-        function (gltf) {
-          const model = gltf.scene;
-          model.scale.set(10, 10, 10); // Scale the model up
-          scene.add(model);
-
-          // Intro animation using GSAP
-          gsap.fromTo(
-            camera.position,
-            { x: 150, y: 300, z: 150 }, // Start position
-            {
-              x: -18,
-              y: 25,
-              z: -100,
-              duration: 5,
-              ease: "power2.inOut",
-              onUpdate: () => {
-                camera.lookAt(model.position);
-              },
-              onComplete: () => {
-                // Trigger the typing effect after the animation completes
-                const typewriter = document.getElementById("typewriter");
-                typewriter.classList.add("typewriter-active");
-
-                // Show the image after typing is done
-                const imageLink = document.getElementById("imageLink");
-                imageLink.classList.add("visible");
-              },
+            const starVertices = [];
+            for (let i = 0; i < 5000; i++) {
+                const x = (Math.random() - 0.5) * 2000;
+                const y = (Math.random() - 0.5) * 2000;
+                const z = (Math.random() - 0.5) * 2000;
+                starVertices.push(x, y, z);
             }
-          );
 
-          // Load the larger sphere model after the main model is loaded
-          gltfLoader.load(
-            "3D Models/galaxy_sphere/scene.gltf",
-            function (gltf) {
-              const largeSphere = gltf.scene;
-              largeSphere.scale.set(1500, 1500, 1500);
-              scene.add(largeSphere);
-              controls.maxDistance = 520;
-            },
-            undefined,
-            function (error) {
-              console.error(error);
+            starGeometry.setAttribute(
+                "position",
+                new THREE.Float32BufferAttribute(starVertices, 3)
+            );
+            const stars = new THREE.Points(starGeometry, starMaterial);
+            scene.add(stars);
+
+            // Add planets
+            const planetColors = [
+                0x87cefa, 0xffb6c1, 0xadd8e6, 0xffc0cb, 0xb0e0e6, 0xd8bfd8,
+                0xe6e6fa, 0xf0e68c, 0xffdab9, 0xffefd5, 0xdda0dd, 0x98fb98,
+                0xafeeee, 0xdb7093, 0xffe4e1, 0xffe4b5, 0xffdead, 0xf5deb3,
+                0xfffacd, 0xe0ffff,
+            ];
+            const sphereGeometry = new THREE.SphereGeometry(5, 32, 32);
+
+            for (let i = 0; i < 20; i++) {
+                const color = planetColors[i % planetColors.length];
+                const sphereMaterial = new THREE.MeshPhongMaterial({
+                    color: color,
+                    shininess: 100,
+                });
+                const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+                sphere.position.set(
+                    (Math.random() - 0.5) * 5000,
+                    (Math.random() - 0.5) * 5000,
+                    (Math.random() - 0.5) * 5000
+                );
+                scene.add(sphere);
             }
-          );
-        },
-        undefined,
-        function (error) {
-          console.error(error);
-        }
-      );
 
-      // Camera positioning
-      camera.position.set(-8, 15, -10);
-      camera.lookAt(0, 0, 0);
+            // Add suns
+            const sunColors = [0xffd700, 0xffa500, 0xff4500];
+            const sunGeometry = new THREE.SphereGeometry(10, 32, 32);
 
-      // Animation loop
-      function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
-      }
-      animate();
+            for (let i = 0; i < sunColors.length; i++) {
+                const sunMaterial = new THREE.MeshPhongMaterial({
+                    color: sunColors[i],
+                    emissive: sunColors[i],
+                    emissiveIntensity: 1,
+                    shininess: 100,
+                });
+                const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+                sun.position.set(
+                    (Math.random() - 0.5) * 6000,
+                    (Math.random() - 0.5) * 6000,
+                    (Math.random() - 0.5) * 6000
+                );
+                scene.add(sun);
+            }
 
-      // Handle window resize
-      window.addEventListener("resize", () => {
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-        renderer.setSize(width, height);
-        camera.aspect = width / height;
-        camera.updateProjectionMatrix();
-      });
+            // Load GLTF model (replace with your path)
+            const gltfLoader = new THREE.GLTFLoader();
+            gltfLoader.load(
+                "3D Models/City/bc5bb02ff6c44a2aa3c1abe0c717fec0_Textured.gltf",
+                function (gltf) {
+                    const model = gltf.scene;
+                    model.scale.set(10, 10, 10); // Scale the model up
+                    scene.add(model);
 
-      function openNav() {
-        document.getElementById("myNav").style.width = "100%";
-      }
+                    // Intro animation using GSAP
+                    gsap.fromTo(
+                        camera.position,
+                        { x: 150, y: 300, z: 150 }, // Start position
+                        {
+                            x: -18,
+                            y: 25,
+                            z: -100,
+                            duration: 5,
+                            ease: "power2.inOut",
+                            onUpdate: () => {
+                                camera.lookAt(model.position);
+                            },
+                            onComplete: () => {
+                                // Trigger the typing effect after the animation completes
+                                const typewriter =
+                                    document.getElementById("typewriter");
+                                typewriter.classList.add("typewriter-active");
 
-      function closeNav() {
-        document.getElementById("myNav").style.width = "0%";
-      }
-    </script>
-  </body>
+                                // Show the image after typing is done
+                                const imageLink =
+                                    document.getElementById("imageLink");
+                                imageLink.classList.add("visible");
+                            },
+                        }
+                    );
+
+                    // Load the larger sphere model after the main model is loaded
+                    gltfLoader.load(
+                        "3D Models/galaxy_sphere/scene.gltf",
+                        function (gltf) {
+                            const largeSphere = gltf.scene;
+                            largeSphere.scale.set(1500, 1500, 1500);
+                            scene.add(largeSphere);
+                            controls.maxDistance = 520;
+                        },
+                        undefined,
+                        function (error) {
+                            console.error(error);
+                        }
+                    );
+                },
+                undefined,
+                function (error) {
+                    console.error(error);
+                }
+            );
+
+            // Camera positioning
+            camera.position.set(-8, 15, -10);
+            camera.lookAt(0, 0, 0);
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Handle window resize
+            window.addEventListener("resize", () => {
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+                renderer.setSize(width, height);
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+            });
+
+            function openNav() {
+                document.getElementById("myNav").style.width = "100%";
+            }
+
+            function closeNav() {
+                document.getElementById("myNav").style.width = "0%";
+            }
+        </script>
+    </body>
 </html>
 
 <!-- Developed by Arji Jethin & Aluru Bala Karthikeya -->
