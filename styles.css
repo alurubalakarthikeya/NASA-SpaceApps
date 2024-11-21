@@ -181,6 +181,7 @@ button {
   font-family: var(--font-one);
   cursor: pointer;
   transition: 0.4s;
+  color: white;
 }
 
 button > a {
@@ -192,6 +193,7 @@ button:hover {
   background-color: var(--secondary-color);
   border-left: 2px solid var(--quaternary-color);
   border-right: 2px solid var(--quaternary-color);
+  color: white;
 }
 
 p {
